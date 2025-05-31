@@ -5,7 +5,9 @@
     ...
 }:
     { 
-
+        imports = [
+          ./niri.nix
+        ];
         hj = {
            packages = [ pkgs.niri pkgs.astal-shell ];
            files = {

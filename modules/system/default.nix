@@ -10,13 +10,14 @@
   ...
 }: {
   imports = [
-    ./desktop 
+     ./base
     ./common 
     ./drivers 
-    ./nix 
+    ./system
     ./terminal
     ./media
-    ./hyprland
     ./themes
+    ./wm/hyprland 
+    ./wm/niri 
   ];
 }

@@ -1,10 +1,6 @@
-{inputs, ...}: {
+{inputs, pkgs, lib, system, config, ...}: {
   # withSystem makes 'pkgs' available so that different systems have the respective package set
-  perSystem = {
-    pkgs,
-    lunixpkgs,
-    ...
-  }: {
+  
     _module.args.theme = {
       colors = inputs.basix.schemeData.base24.catppuccin-mocha.palette;
       fonts = {
@@ -41,5 +37,4 @@
         primary = "/home/antonio/Pictures/wallpapers/guts-5k-berserk-3840x2160-13631.jpg";
       };
     };
-  };
 }

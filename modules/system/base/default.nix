@@ -6,9 +6,7 @@
       ./fonts.nix
       ./hm-clean.nix
       ./launcher.nix
-      ./hyprland.nix
       ./mpv.nix 
-      ./niri.nix
       ./fuzzel.nix
     ];
 }

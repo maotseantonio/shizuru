@@ -7,6 +7,7 @@
 }:{
     imports = [
       ./bind.nix
+      ./hyprland.nix
       #./hyprpanel.nix
     ];
        

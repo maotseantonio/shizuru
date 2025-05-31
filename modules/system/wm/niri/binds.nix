@@ -22,8 +22,8 @@ in ''
     XF86AudioNext         { spawn "playerctl" "next"; }
     XF86AudioRaiseVolume  { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
     XF86AudioLowerVolume  { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
-    XF86MonBrightnessUp   { spawn "brightnessctl" "set" "5%+"; }
-    XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
+    XF86MonBrightnessUp   { spawn "brightness" "--inc"; }
+    XF86MonBrightnessDown { spawn "brightness" "--dec"; }
     Print { screenshot-screen; }
     Mod+Shift+Alt+S { screenshot-window; }
     Mod+Shift+S { screenshot; }
