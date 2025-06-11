@@ -164,8 +164,8 @@ Other dotfiles that I learned / copy from:
   - [LinuxMobile](https://github.com/linuxmobile/kaku.git): for niri config and astal bar i love u man
 
 - now my config is move to hjem and hjem-rum so sometime it breaks 
- - [https://github.com/feel-co/hjem.git]
- - [https://github.com/snugnug/hjem-rum.git]
+ - [hjem](https://github.com/feel-co/hjem.git)
+ - [hjem-rum](https://github.com/snugnug/hjem-rum.git)
 
 
 <!-- # ✨ Stars History -->
