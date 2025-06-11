@@ -65,8 +65,8 @@
 ### Now My Primary WM is Niri But I also update my hyprland and its config. good luck have fun. 
 ## 📚 Layout
 
-<h1>[hjem](https://github.com/feel-co/hjem.git)</h1>
-<h1>[hjem-rum](https://github.com/snugnug/hjem-rum.git)</h1>
+<h1>(https://github.com/feel-co/hjem.git)</h1>
+<h1>(https://github.com/snugnug/hjem-rum.git)</h1>
 
 -   [flake.nix](flake.nix) base of the configuration
 -   [hosts](hosts) 🌳 per-host configurations that contain machine specific configurations
