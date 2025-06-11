@@ -65,9 +65,6 @@
 ### Now My Primary WM is Niri But I also update my hyprland and its config. good luck have fun. 
 ## 📚 Layout
 
-<h1>(https://github.com/feel-co/hjem.git)</h1>
-<h1>(https://github.com/snugnug/hjem-rum.git)</h1>
-
 -   [flake.nix](flake.nix) base of the configuration
 -   [hosts](hosts) 🌳 per-host configurations that contain machine specific configurations
     - [default](hosts/default/) 🖥️Default configurations for my desktop if you have laptop, use hostname as shizuru
@@ -165,6 +162,10 @@ Other dotfiles that I learned / copy from:
   - [sioodmy/dotfiles](https://github.com/sioodmy/dotfiles)
   - [Ruixi-rebirth/flakes](https://github.com/Ruixi-rebirth/flakes)
   - [LinuxMobile](https://github.com/linuxmobile/kaku.git): for niri config and astal bar i love u man
+
+- now my config is move to hjem and hjem-rum so sometime it breaks 
+ - [https://github.com/feel-co/hjem.git]
+ - [https://github.com/snugnug/hjem-rum.git]
 
 
 <!-- # ✨ Stars History -->
