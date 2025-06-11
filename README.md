@@ -33,13 +33,11 @@
 ### 🖼️ Gallery for Hyprland
 
 <p align="center">
-   <img src="./.github/assets/screenshots/1.png" style="margin-bottom: 10px;"/> <br>
-   <img src="./.github/assets/screenshots/2.png" style="margin-bottom: 10px;"/> <br>
-   <img src="./.github/assets/screenshots/3.png" style="margin-bottom: 10px;"/> <br>
-   <img src="./.github/assets/screenshots/4.png" style="margin-bottom: 10px;"/> <br>
-   <img src="./.github/assets/screenshots/5.png" style="margin-bottom: 10px;"/> <br>
-   <img src="./.github/assets/screenshots/6.jpg" style="margin-bottom: 10px;"/> <br>  
-   <img src="./.github/assets/screenshots/7.png" style="margin-bottom: 10px;"/> <br>
+   <img src="./.github/assets/screenshots/quickshell-1.png" style="margin-bottom: 10px;"/> <br>
+   <img src="./.github/assets/screenshots/quickshell-2.png" style="margin-bottom: 10px;"/> <br>
+   <img src="./.github/assets/screenshots/quickshell-3.png" style="margin-bottom: 10px;"/> <br>
+   <img src="./.github/assets/screenshots/quickshell-4.png" style="margin-bottom: 10px;"/> <br>
+   <img src="./.github/assets/screenshots/quickshell-5.png" style="margin-bottom: 10px;"/> <br>
    <img src="./.github/assets/screenshots/hyprlock.png" style="margin-bottom: 10px;"/> <br>
 
   Screenshots last updated <b>2025-4-29</b>
