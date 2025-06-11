@@ -60,9 +60,13 @@
 
 
 # 🗃️ Overview
-### My config was different from JaKooLit NixOS-Hyprland. Dont blindly use my install script. plz check the install.sh file.
+### My config was different from JaKooLit NixOS-Hyprland. Dont use my install script. it is just for me. and my config is now under heavy development. 
+### i move to hjem and hjem-rum. so it breaks for some time.
 ### Now My Primary WM is Niri But I also update my hyprland and its config. good luck have fun. 
 ## 📚 Layout
+
+<h1>[hjem](https://github.com/feel-co/hjem.git)</h1>
+<h1>[hjem-rum](https://github.com/snugnug/hjem-rum.git)</h1>
 
 -   [flake.nix](flake.nix) base of the configuration
 -   [hosts](hosts) 🌳 per-host configurations that contain machine specific configurations
@@ -135,151 +139,6 @@
 | **Clipboard**               | [wl-clip-persist] |
 | **Color Picker**            | [hyprpicker] |
 
-
-## 📝 Shell aliases
-
-<details>
-<summary>
-Utils (EXPAND)
-</summary>
-
-- ```cl```     $\rightarrow$ ```clear```
-- ```cd```    $\rightarrow$ ```z```
-- ```tt```    $\rightarrow$ ```gtrash put```
-- ```v```   $\rightarrow$ ```nvim```
-- ```cat```   $\rightarrow$ ```bat```
-- ```code```  $\rightarrow$ ```codium```
-- ```icat```  $\rightarrow$ ```kitten icat```
-- ```l```     $\rightarrow$ ```eza --icons  -a --group-directories-first -1```
-- ```ll```    $\rightarrow$ ```eza --icons  -a --group-directories-first -1 --no-user --long```
-- ```tree```  $\rightarrow$ ```eza --icons --tree --group-directories-first```
-</details>
-
-<details>
-<summary>
-Nixos (EXPAND)
-</summary>
-
-- ```fuckdit```      $\rightarrow$ ```cd ~/NixOS-Hyprland/ && codium ~/NixOS-Hyprland/```
-- ```fucknix```   $\rightarrow$ ```sudo nixos rebuild switch --flake .#nixy4life```
-</details>
-
-<details>
-<summary>
-</summary>
-</details>
-
-## 🛠️ Scripts
-
-All the scripts are in ```~/.config/home-manager/scripts/scripts/``` and are exported as packages in ```~/.config/home-manager/scripts/scripts.nix```
-
-<details>
-<summary>
-extract.sh 
-</summary>
-
-**Description:** This script extract ```tar.gz``` archives in the current directory.
-
-**Usage:** ```extract <archive_file>```
-</details>
-
-<details>
-<summary>
-compress.sh 
-</summary>
-</details>
-
-<details>
-<summary>
-maxfetch.sh 
-</summary>
-
-**Description:** This script is a modified version of the [jobcmax/maxfetch][maxfetch] script.
-
-**Usage:** ```maxfetch```
-</details>
-
-<details>
-<summary>
-music.sh 
-</summary>
-
-**Description:** This script is for managing Audacious (music player). If Audacious is currently running, it will be killed (stopping the music); otherwise, it will start Audacious in the 8th workspace and resume the music. 
-
-**Usage:** ```music```
-</details>
-
-<details>
-<summary>
-runbg.sh 
-</summary>
-
-**Description:** This script runs a provided command along with its arguments and detaches it from the terminal. Handy for launching apps from the command line without blocking it. 
-
-**Usage:** ```runbg <command> <arg1> <arg2> <...>```
-</details>
-
-
-```bash
-nix-shell -p git
-git clone https://github.com/maotseantonio/NixOS-Hyprland
-cd NixOS-Hyprland
-```
-#### 3. **Install script**
-> [!CAUTION]
-> For some computers, the default rebuild command might get stuck due to CPU cores running out of RAM. To fix that modify the install script line: ```sudo nixos-rebuild switch --flake .#${HOST}``` to ```sudo nixos-rebuild switch --cores <less than your max number of cores> --flake .#${HOST}```
-
-> [!TIP]
-> As it is better to know what a script does before running it, you are advised to read it or at least see the [Install script walkthrough](#Install-script-walkthrough) section before execution.
-   
-Execute and follow the installation script :
-```bash
-./install.sh
-```
-  
-#### 4. **Reboot**
-
-After rebooting, the config should be applied, you'll be greeted by hyprlock prompting for your password.
-
-#### 5. **Manual config**
-
-```
-
-## Install script walkthrough
-
-A brief walkthrough of what the install script does.
-
-#### 1. **Get username**
-
-You will receive a prompt to enter your username, with a confirmation check.
-
-#### 2. **Set username**
-
-The script will replace all occurancies of the default usename ```CURRENT_USERNAME``` by the given one stored in ```$username```
-
-#### 3. Create basic directories
-
-The following directories will be created:
-- ```~/Music```
-- ```~/Documents```
-- ```~/Pictures/wallpapers/others```
-
-#### 4. Copy the wallpapers
-
-Then the wallpapers will be copied into ```~/Pictures/wallpapers/others``` which is the folder in which the ```wallpaper-picker.sh``` script will be looking for them.
-
-#### 5. Get the hardware configuration
-
-It will also automatically copy the hardware configuration from ```/etc/nixos/hardware-configuration.nix``` to ```./hosts/${host}/hardware-configuration.nix``` so that the hardware configuration used is yours and not the default one.
-
-#### 6. Choose a host (desktop / laptop)
-
-Now you will need to choose the host you want. It depend on whether you are using a desktop or laptop (or a VM altho it can be realy buggy).
-
-#### 7. Build the system
-
-Lastly, it will build the system, which includes both the flake config and home-manager config.
-```
 # 👥 Credits
 
 Other dotfiles that I learned / copy from:
