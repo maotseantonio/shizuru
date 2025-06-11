@@ -30,7 +30,7 @@
 </h1>
 
 
-### 🖼️ Gallery for Hyprland
+### 🖼️ Gallery for Hyprland (qs config is from this guy https://github.com/caelestia-dots/shell.git)
 
 <p align="center">
    <img src="./.github/assets/screenshots/quickshell-1.png" style="margin-bottom: 10px;"/> <br>
