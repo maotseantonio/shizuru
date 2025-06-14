@@ -33,7 +33,7 @@ in
           {
             # Lock screen after 20 minutes total idle
             timeout = 12000;
-            on-timeout = ''sh -c 'notify-send "Locking after idle" && loginctl lock-session' '';
+            #on-timeout = ''sh -c 'notify-send "Locking after idle" && loginctl lock-session' '';
           }
         ];
       };
