@@ -4,7 +4,7 @@
 
 # Define the path to the swww cache directory
 cache_dir="$HOME/.cache/swww/"
-
+#wallpaper_path="$HOME/.config/hypr/wallpaper_effects/"
 # Get a list of monitor outputs
 monitor_outputs=($(ls "$cache_dir"))
 

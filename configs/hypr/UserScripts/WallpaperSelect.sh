@@ -7,8 +7,9 @@ wallDIR="$HOME/Pictures/wallpapers"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
 wallpaper_current="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
 startup_conf="$HOME/.config/hypr/UserConfigs/Startup_Apps.conf"
-
 iDIR="$HOME/.config/swaync/images"
+state_dir="$HOME/.local/state/caelestia/wallpaper"
+mkdir -p "$state_dir"
 
 # swww transition config
 FPS=60
@@ -119,6 +120,7 @@ apply_image_wallpaper() {
   fi
   swww img -o "$focused_monitor" "$image_path" $SWWW_PARAMS
   ln -sf "$image_path" "$wallpaper_current"
+  echo "$image_path" > "$state_dir/last.txt"
   "$SCRIPTSDIR/WallustSwww.sh"
   sleep 2
   "$SCRIPTSDIR/Refresh.sh"
@@ -135,6 +137,7 @@ apply_video_wallpaper() {
   kill_wallpaper_for_video
   mpvpaper '*' -o "load-scripts=no no-audio --loop" "$video_path" &
   ln -sf "$video_path" "$wallpaper_current"
+  echo "$video_path" > "$state_dir/last.txt"
 }
 
 main() {

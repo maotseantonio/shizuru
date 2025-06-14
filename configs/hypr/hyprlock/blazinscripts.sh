@@ -52,11 +52,11 @@ elif [ "$1" == "-music" ]; then
 	get_source_info() {
 		trackid=$(get_metadata "mpris:trackid")
 		if [[ "$trackid" == *"firefox"* ]]; then
-			echo -e "Firefox 󰈹"
+			echo -e "Firefox 󰈹 "
 		elif [[ "$trackid" == *"spotify"* ]]; then
-			echo -e "Spotify "
+			echo -e "Spotify  "
 		elif [[ "$trackid" == *"chromium"* ]]; then
-			echo -e "Chrome "
+			echo -e "Chrome  "
 		else
 			echo "Source    "
 		fi
@@ -73,11 +73,11 @@ elif [ "$1" == "-music" ]; then
 			thirty="$ten$ten$ten"
 			len=${#title}
 			end="   "
-			if ((len>13)); then
-				len=13
+			if ((len>18)); then
+				len=18
 				end="..."
 			fi
-			title="${title:0:13}${thirty:0:$((13 - len))}"
+			title="${title:0:18}${thirty:0:$((18 - len))}"
 			echo "${title}${end}"
 			#echo "${title:0:18}" # Limit the output to 50 characters
 		fi
@@ -114,7 +114,7 @@ elif [ "$1" == "-music" ]; then
 				len=10
 				end="..."
 			fi
-			artist="${artist:0:10}${thirty:0:$((10 - len))}"
+			artist="${artist:0:30}${thirty:0:$((10 - len))}"
 			echo "${artist}${end}"
 			# echo "${artist:0:30}" # Limit the output to 50 characters
 		fi
@@ -131,11 +131,12 @@ elif [ "$1" == "-music" ]; then
 	--status)
 		status=$(playerctl status 2>/dev/null)
 		if [[ $status == "Playing" ]]; then
-			echo "󰎆"
+			#echo "󰎆 "
+      echo ""
 		elif [[ $status == "Paused" ]]; then
-			echo "󱑽"
+			echo " 󱑽 "
 		else
-			echo ""
+			echo "  "
 		fi
 		;;
 	--album)

@@ -1,0 +1,260 @@
+plugin {
+    scroller {
+        column_default_width = fiveeighths
+        focus_wrap = false
+        column_widths = onehalf one 
+        center_active_column = false
+        center_active_window = true
+        center_row_if_space_available = true
+    }
+}
+# Move focus with mainMod + arrow keys
+bind = $mainMod, left, movefocus, l
+bind = $mainMod, right, movefocus, r
+bind = $mainMod, up, movefocus, u
+bind = $mainMod, down, movefocus, d
+bind = $mainMod, home, scroller:movefocus, begin
+bind = $mainMod, end, scroller:movefocus, end
+bind = $mainMod, l, movefocus, r
+bind = $mainMod, h, movefocus, l
+# Movement
+bind = $mainMod CTRL, left, movewindow, l
+bind = $mainMod CTRL, right, movewindow, r
+bind = $mainMod CTRL, up, movewindow, u
+#bind = $mainMod CTRL, down, movewindow, d
+bind = $mainMod CTRL, down, scroller:movewindow, d
+bind = $mainMod CTRL, home, scroller:movewindow, begin
+bind = $mainMod CTRL, end, scroller:movewindow, end
+bind = $mainMod ALT, left, movewindow, l, nomode
+bind = $mainMod ALT, right, movewindow, r, nomode
+bind = $mainMod ALT, up, movewindow, u, nomode
+bind = $mainMod ALT, down, movewindow, d, nomode
+bind = $mainMod ALT, home, scroller:movewindow, begin, nomode
+bind = $mainMod ALT, end, scroller:movewindow, end, nomode
+
+# Modes
+# Set Mode Modifiers submap
+# will switch to a submap called modifiers
+#bind = $mainMod, backslash, submap, modifiers
+# will start a submap called "modifiers"
+submap = modifiers
+bind = , right, scroller:setmodemodifier, after
+bind = , right, submap, reset
+bind = , left, scroller:setmodemodifier, before
+bind = , left, submap, reset
+bind = , home, scroller:setmodemodifier, beginning
+bind = , home, submap, reset
+bind = , end, scroller:setmodemodifier, end
+bind = , end, submap, reset
+bind = , up, scroller:setmodemodifier, focus
+bind = , up, submap, reset
+bind = , down, scroller:setmodemodifier, nofocus
+bind = , down, submap, reset
+bind = , 2, scroller:setmodemodifier, auto:2
+bind = , 2, submap, reset
+bind = , 3, scroller:setmodemodifier, auto:3
+bind = , 3, submap, reset
+bind = , m, scroller:setmodemodifier, manual
+bind = , m, submap, reset
+bind = , c, scroller:setmodemodifier, center_column
+bind = , c, submap, reset
+bind = SHIFT, c, scroller:setmodemodifier, nocenter_column
+bind = SHIFT, c, submap, reset
+bind = , w, scroller:setmodemodifier, center_window
+bind = , w, submap, reset
+bind = SHIFT, w, scroller:setmodemodifier, nocenter_window
+bind = SHIFT, w, submap, reset
+# use reset to go back to the global submap
+bind = , escape, submap, reset
+# will reset the submap, meaning end the current one and return to the global one
+submap = reset
+
+# Sizing keys
+# bind = $mainMod, equal, scroller:cyclesize, next
+# bind = $mainMod, minus, scroller:cyclesize, prev
+bind = $mainMod, equal, resizeactive, 200 0
+bind = $mainMod, minus, resizeactive, -200 0
+bind = $mainMod SHIFT, equal, scroller:cycleheight, next
+bind = $mainMod SHIFT, minus, scroller:cycleheight, prev
+bind = $mainMod , F, scroller:cyclewidth, next
+
+# Sizes submap
+# will switch to a submap called sizing
+#bind = $mainMod, b, submap, sizing
+# will start a submap called "align"
+submap = sizing
+# sets repeatable binds for aligning the active window
+bind = , 1, scroller:setsize, oneeighth
+bind = , 1, submap, reset
+bind = , 2, scroller:setsize, onesixth
+bind = , 2, submap, reset
+bind = , 3, scroller:setsize, onefourth
+bind = , 3, submap, reset
+bind = , 4, scroller:setsize, onethird
+bind = , 4, submap, reset
+bind = , 5, scroller:setsize, threeeighths
+bind = , 5, submap, reset
+bind = , 6, scroller:setsize, onehalf
+bind = , 6, submap, reset
+bind = , 7, scroller:setsize, fiveeighths
+bind = , 7, submap, reset
+bind = , 8, scroller:setsize, twothirds
+bind = , 8, submap, reset
+bind = , 9, scroller:setsize, threequarters
+bind = , 9, submap, reset
+bind = , 0, scroller:setsize, fivesixths
+bind = , 0, submap, reset
+bind = , minus, scroller:setsize, seveneighths
+bind = , minus, submap, reset
+bind = , equal, scroller:setsize, one
+bind = , equal, submap, reset
+# use reset to go back to the global submap
+bind = , escape, submap, reset
+# will reset the submap, meaning end the current one and return to the global one
+submap = reset
+
+# Admit/Expel
+bind = $mainMod, I, scroller:admitwindow,
+bind = $mainMod, O, scroller:expelwindow,
+bind = $mainMod SHIFT, I, scroller:admitwindow, r
+bind = $mainMod SHIFT, O, scroller:expelwindow, l
+
+# Center submap
+# will switch to a submap called center
+#bind = $mainMod, M, submap, center
+# will start a submap called "center"
+submap = center
+# sets repeatable binds for resizing the active window
+bind = , C, scroller:alignwindow, c
+bind = , C, submap, reset
+bind = , m, scroller:alignwindow, m
+bind = , m, submap, reset
+bind = , right, scroller:alignwindow, r
+bind = , right, submap, reset
+bind = , left, scroller:alignwindow, l
+bind = , left, submap, reset
+bind = , up, scroller:alignwindow, u
+bind = , up, submap, reset
+bind = , down, scroller:alignwindow, d
+bind = , down, submap, reset
+# use reset to go back to the global submap
+bind = , escape, submap, reset
+# will reset the submap, meaning end the current one and return to the global one
+submap = reset
+
+# Resize submap
+# will switch to a submap called resize
+bind = $mainMod SHIFT, R, submap, resize
+# will start a submap called "resize"
+submap = resize
+# sets repeatable binds for resizing the active window
+binde = , right, resizeactive, 100 0
+binde = , left, resizeactive, -100 0
+binde = , up, resizeactive, 0 -100
+binde = , down, resizeactive, 0 100
+# use reset to go back to the global submap
+bind = , escape, submap, reset
+# will reset the submap, meaning end the current one and return to the global one
+submap = reset
+
+# Fit size submap
+# will switch to a submap called fitsize
+#bind = $mainMod, W, submap, fitsize
+# will start a submap called "fitsize"
+submap = fitsize
+# sets binds for fitting columns/windows in the screen
+bind = , W, scroller:fitsize, visible
+bind = , W, submap, reset
+bind = , right, scroller:fitsize, toend
+bind = , right, submap, reset
+bind = , left, scroller:fitsize, tobeg
+bind = , left, submap, reset
+bind = , up, scroller:fitsize, active
+bind = , up, submap, reset
+bind = , down, scroller:fitsize, all
+bind = , down, submap, reset
+bind = , bracketleft, scroller:fitwidth, all
+bind = , bracketleft, submap, reset
+bind = , bracketright, scroller:fitheight, all
+bind = , bracketright, submap, reset
+# use reset to go back to the global submap
+bind = , escape, submap, reset
+# will reset the submap, meaning end the current one and return to the global one
+submap = reset
+
+# overview keys
+# bind key to toggle overview (normal)
+bind = ALT, grave, scroller:toggleoverview
+bind = ,mouse:275, scroller:toggleoverview
+
+# Marks
+#bind = $mainMod, M, submap, marksadd
+submap = marksadd
+bind = , a, scroller:marksadd, a
+bind = , a, submap, reset
+bind = , b, scroller:marksadd, b
+bind = , b, submap, reset
+bind = , c, scroller:marksadd, c
+bind = , c, submap, reset
+bind = , escape, submap, reset
+submap = reset
+
+bind = $mainMod SHIFT, M, submap, marksdelete
+submap = marksdelete
+bind = , a, scroller:marksdelete, a
+bind = , a, submap, reset
+bind = , b, scroller:marksdelete, b
+bind = , b, submap, reset
+bind = , c, scroller:marksdelete, c
+bind = , c, submap, reset
+bind = , escape, submap, reset
+submap = reset
+
+bind = $mainMod, apostrophe, submap, marksvisit
+submap = marksvisit
+bind = , a, scroller:marksvisit, a
+bind = , a, submap, reset
+bind = , b, scroller:marksvisit, b
+bind = , b, submap, reset
+bind = , c, scroller:marksvisit, c
+bind = , c, submap, reset
+bind = , escape, submap, reset
+submap = reset
+
+bind = $mainMod CTRL, M, scroller:marksreset
+
+# Pin
+bind = $mainMod, P, scroller:pin,
+
+# Window copy/paste
+bind = $mainMod, Insert, scroller:selectiontoggle,
+bind = $mainMod CTRL, Insert, scroller:selectionreset,
+bind = $mainMod SHIFT, Insert, scroller:selectionmove, right
+bind = $mainMod CTRL SHIFT, Insert, scroller:selectionworkspace,
+
+# Trails and Trailmarks
+bind = $mainMod SHIFT, semicolon, submap, trail
+submap = trail
+bind = , bracketright, scroller:trailnext,
+bind = , bracketleft, scroller:trailprevious,
+bind = , semicolon, scroller:trailnew,
+bind = , semicolon, submap, reset
+bind = , d, scroller:traildelete,
+bind = , d, submap, reset
+bind = , c, scroller:trailclear,
+bind = , c, submap, reset
+bind = , Insert, scroller:trailtoselection,
+bind = , Insert, submap, reset
+bind = , escape, submap, reset
+submap = reset
+
+bind = $mainMod, semicolon, submap, trailmark
+submap = trailmark
+bind = , bracketright, scroller:trailmarknext,
+bind = , bracketleft, scroller:trailmarkprevious,
+bind = , semicolon, scroller:trailmarktoggle,
+bind = , semicolon, submap, reset
+bind = , escape, submap, reset
+submap = reset
+
+bind = $mainMod, slash, scroller:jump,

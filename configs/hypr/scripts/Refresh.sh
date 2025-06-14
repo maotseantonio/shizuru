@@ -26,11 +26,11 @@ done
 # quit agsiif [[ i ]]; then
 pkill ags &
 
-hyprpanel q 
+#hyprpanel q 
 
-sleep 0.3
+#sleep 0.3
 
-hyprpanel &
+#hyprpanel &
 
 sleep 0.3
 #Restart waybar

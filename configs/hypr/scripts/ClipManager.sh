@@ -8,10 +8,10 @@
 
 while true; do
     result=$(
-        rofi -i -dmenu \
+        rofi -i -dmenu -show-icons -p 'Clipboard' \
             -kb-custom-1 "Control-Delete" \
             -kb-custom-2 "Alt-Delete" \
-            -config ~/.config/rofi/launchers/type-1/style-5.rasi < <(cliphist list)
+            -config ~/.config/rofi/config-clipboard.rasi < <(cliphist list) 
     )
 
     case "$?" in
@@ -24,7 +24,7 @@ while true; do
                     continue
                     ;;
                 *)
-                    cliphist decode <<<"$result" | wl-copy
+                    cliphist decode <<< cliphist-rofi-img | "$result" | wl-copy | awk '{print $1}'
                     exit
                     ;;
             esac
