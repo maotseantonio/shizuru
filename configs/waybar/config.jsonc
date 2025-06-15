@@ -1,9 +1,10 @@
 {
-     
-    "layer": "top",
+
+    "layer": "overlay",
     "position": "left",
     "mod": "dock",
     "height": 32,
+    "width": 12,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -16,10 +17,11 @@
         "temperature",
         "group/themes",
         "custom/weather"
+
       ],
 
       "modules-center": [
-        "hyprland/workspaces"
+        "niri/workspaces"
       ],
 
       "modules-right": [
@@ -29,9 +31,53 @@
         "clock",
         "group/power"
       ],
-    
 
-  //  Group Launchers
+
+"custom/spotify": {
+  "exec": "~/.config/waybar/scripts/vertical.sh",
+  "interval": 1,
+  "return-type": "json",
+  "format": "{join(\"\n\")}",
+  "tooltip": false
+},
+
+  "custom/memory": {
+     "exec": "~/.config/waybar/scripts/vertical.sh",
+     "tooltip": false,
+     "interval": 0,
+	   "return-type": "text",
+		 "markup": "pango",
+		 "format": "{}"
+  },
+
+ "niri/workspaces": {
+      "format": "{icon}",
+      "on-click": "~/.config/polybar.old/ws1.sh",
+      "all-outputs": true,
+      "enable-bar-scroll": true,
+      "smooth-scrolling-threshold": 1,
+      "on-scroll-up": "hyprctl dispatch workspace 1; playerctl pause",
+      "on-scroll-down": "hyprctl dispatch workspace 1; playerctl pause",
+      "persistent-workspaces" :{
+          "1": [],
+	 		    "2": [],
+	 		    "3": [],
+          "4": []
+        },
+        "format-icons": {
+                "1": "",
+             		"2": "",
+             		"3": "",
+             		"4": "",
+             		"5": "",
+             		"6": "",
+             		"7": "",
+             		"8": "",
+             		"9": "",
+             		"10": ""
+          
+  }
+ },
 
 "group/launcher": {
   "orientation": "vertical",
@@ -124,12 +170,12 @@
     "custom/theme-switcher": {
       "format": "󰬁󰫵󰫲󱎥󰫲󱎤",
       "tooltip-format": "Switch Themes",
-      "on-click": "~/.config/hypr/scripts/themeswitcher.sh",
+      "on-click": "walker -m wallpaper",
       "rotate": 90,
     },
-    
 
-  // Hyprland Workspaces 
+
+  // Hyprland Workspaces
 
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -148,14 +194,14 @@
       "*": 5, // 5 workspaces by default on every monitor
       "HDMI-A-1": 6 // but only three on HDMI-A-1
 },
-  
+
   },
 
 	"wlr/taskbar": {
 		"format": "{icon}",
 		"icon-size": 16,
 		"icon-theme": "Tela-circle-dracula",
-        "spacing": 0,
+    "spacing": 0,
 		"tooltip-format": "{title}",
 		"on-click": "activate",
 		"on-click-middle": "close",
@@ -166,9 +212,9 @@
 			"firefoxdeveloperedition": "firefox-developer-edition"
 		}
 	},
-  
+
 // Slider configuration
-  
+
   "pulseaudio/slider": {
     "min": 0,
     "max": 100,
@@ -190,6 +236,7 @@
     "interval": 1,
     "format": "\n{:%H\n%M}",
     "tooltip": false,
+    "orientation": "vertical"
  },
 
 

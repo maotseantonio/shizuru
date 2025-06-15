@@ -10,12 +10,16 @@
     nix = {
       url = "github:NixOS/nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    }; 
+    flake-programs-sqlite = {
+        url = "github:wamserma/flake-programs-sqlite";
+        inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-programs-sqlite.url = "github:wamserma/flake-programs-sqlite";
-    flake-programs-sqlite.inputs.nixpkgs.follows = "nixpkgs";
-    agsv1.url = "github:dtomvan/agsv1";
-    agsv1.inputs.nixpkgs.follows = "nixpkgs";
 
+    agsv1 = {
+        url = "github:dtomvan/agsv1";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
     maomaowm.url = "github:DreamMaoMao/maomaowm";
 
     hycov = {
@@ -79,9 +83,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.disko.follows = "disko";
     };
-
-    matugen.url = "github:/InioX/Matugen";
-    matugen.inputs.nixpkgs.follows = "nixpkgs";
+    matugen = {
+        url = "github:/InioX/Matugen";
+        inputs.nixpkgs.follows = "nixpkgs";
+    }; 
     nvf.url = "github:notashelf/nvf";
     yazi.url = "github:sxyazi/yazi";
 
@@ -189,7 +194,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zjstatus.url = "github:dj95/zjstatus";
+    # zjstatus = {
+    #   url = "github:dj95/zjstatus";
+    # };
   };
 
   outputs = inputs @ {

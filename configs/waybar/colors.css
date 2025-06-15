@@ -1,22 +1,25 @@
-@define-color bg #181825;
-@define-color container #1e1e2e;
+@define-color bg              #1b1e2b;  /* deep navy with slight purple tone */
+@define-color container       #2a2f48;  /* dark indigo/blue-gray */
 
-@define-color fg #d9e9ee;
-@define-color fg-1 #d9e0ee;
+@define-color fg              #eafcff;  /* soft cyan-white */
+@define-color fg-1            #f0e9ff;  /* light pinkish white */
 
-@define-color arch #5ddef5;
-@define-color memory #18b3f5;
-@define-color themes #c4e88b;
-@define-color weather #e497f7;
+@define-color arch            #6ee3f7;  /* cursed energy blue */
+@define-color memory          #5bd2f0;  /* softer aqua */
+@define-color themes          #ffe788;  /* light yellow accent */
+@define-color weather         #ff9ad5;  /* pink-magenta */
 
-@define-color workspace #b3b9b8;
-@define-color workspace-active #67b0e8;
+@define-color workspace       #adc8e5;  /* icy blue-gray */
+@define-color workspace-active #ff6b88; /* bright pink-red */
 
-@define-color slider #3b392e;
-@define-color slider-highlight #e5c76b;
-@define-color calender #bfe386;
-@define-color clock #edafe2;
-@define-color power #d65a5a;
+@define-color slider          #393b32;  /* muted dark olive-gray */
+@define-color slider-highlight #f2c94c; /* gold-yellow */
 
-@define-color logout #f29dc8;
-@define-color reboot #f89d92;
+@define-color calender        #fff3a3;  /* pastel yellow */
+@define-color clock           #ffc1dc;  /* soft pink */
+@define-color power           #e85a72;  /* saturated red-pink */
+
+@define-color logout          #ff8abb;  /* light cotton candy pink */
+@define-color reboot          #ff9685;  /* soft coral */
+
+

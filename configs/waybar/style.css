@@ -1,23 +1,26 @@
 * {
     border: none;
-    border-radius: 0px;
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
     font-size: 12px;
+    min-width: 10px;  
 }
 
 @import "colors.css";
 
 window#waybar {
     background-color: transparent;
+    min-width: 10px; 
 }
 window#waybar > box {
-    min-height: 1200px;
-    border-radius: 8px; 
-    border: 0.5px solid @bg; 
-    margin: 0px 8px 12px 8px;
-    background-color:  @bg; 
-    box-shadow: 2px 3px 3px 1px #000000; 
+    min-width: 10px;  
+    min-height: 1428px;
+    border-radius: 8px;
+    
+    border: 1px solid rgba(69, 71, 90, 1.0);
+    margin-left: 8px;
+    background-color:  #11111b;
+    /* box-shadow: 2px 3px 3px 1px #000000; */
 }
 
 tooltip {
@@ -36,14 +39,14 @@ tooltip {
 #custom-launcher {
     font-size: 18px;
     padding-right: 7px;
-    text-shadow: 5 2 3px rgba(0, 0, 0, 1);
+    text-shadow: 5 2 3px #11111b;
     color: @arch;
 }
 
 box#launcher {
     margin-top: 15px;
     border-radius: 5px;
-    background-color: @bg;
+    background-color: #11111b;
 }
 
 #tray {
@@ -102,8 +105,20 @@ box#launcher {
     text-shadow: 5 2 3px rgba(0, 0, 0, 1);
 }
 
+#taskbar {
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 3px 5px;
+    background-color: alpha(@container, 0.95);
+    border-radius: 10px;
+    border: 0px solid #9ece6a;
+    box-shadow: 1 1 5px rgba(0, 0, 0, 1);
 
-box#themes {
+}
+
+box#themes, #custom-memory, #custom-spotify {
     margin-left: 6px;
     margin-right: 6px;
     margin-top: 5px;
@@ -111,10 +126,10 @@ box#themes {
     padding-left: 10px;
     padding-right: 10px;
     background-color: alpha(@container, 0.95);
-    border-radius: 5px;
+    border-radius: 3px;
     box-shadow: 1 1 5px rgba(0, 0, 0, 1);
   }
-  
+
 #custom-theme-switcher {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -127,28 +142,41 @@ box#themes {
 
 /* Workspace style */
 
-#workspaces label {
-    font-size: 13px;
-    padding-right: 3px;
+#workspaces {
+  background-color: #1D1D2C;
+  margin: 0px 15px 0px 15px;
+  padding: 15px 8px 15px 8px;
+  border: 1px solid rgba(16, 16, 16, 1);
+  border-radius: 1px;
 }
 
 #workspaces button {
-    color: alpha(@workspace, 1);
-    border-radius: 5px;
-    animation: ws_normal 20s ease-in-out 1;
-    padding: 7px 0px
+  background-color: #2d3139;
+  color: #b3b7bd;
+  margin: 4px 0px 4px 0px;
+  padding: 5px 0px 5px 0px;
+  border-radius: 2px;
+  font-size: 0px;
+}
+
+#workspaces button.focused {
+  color: #171C21;
+  border-bottom: none;
+  padding: 8px 0px 8px 0px;
 }
 
 #workspaces button.active {
-    color: @workspace-active;
-    animation: ws_active 20s ease-in-out 1;
-    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+
+background: linear-gradient(135deg, #fdf4c1 0%, #3b4b78 40%, #6ee3f7 70%, #ff6b88 100%);
+  color: #171C21;
+  border-bottom: none;
+  padding: 15px 0px 15px 0px;
+  transition: all 0s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #workspaces button.urgent {
-    background-color: @power;
+  color: #f7467b;
 }
-
 
 
 /* Right Modules */
@@ -176,7 +204,7 @@ box#themes {
 }
 
 #pulseaudio-slider highlight {
-    min-width: 5px;   
+    min-width: 5px;
     border-radius: 5px;
     background-image: none;
     background-color: @slider-highlight;
