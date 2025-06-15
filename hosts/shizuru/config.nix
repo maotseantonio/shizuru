@@ -52,20 +52,20 @@ in
   system.powermanagement.enable = true;
   system.scheduler.enable = true;
   #myOptions.cliphist.enable = false;
-  mine.hypridle.enable = true;
+  mine.hypridle.enable = false;
   #system.btrfs.enable = false;
   system.zfs.enable = true;
   system.zram.enable = true;
   #boot.loader.systemd-boot.enable = true;
   #boot.loader.efi.canTouchEfiVariables = true;
   catppuccin.tty.enable = true;
+  programs.command-not-found.enable = true;
   services.xserver.videoDrivers = ["modesetting" "nvidia"];
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
   users = {
     mutableUsers = true;
-  };
-
+  }; 
   environment.systemPackages =
     (with pkgs; [
 

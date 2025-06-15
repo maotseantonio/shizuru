@@ -11,7 +11,8 @@
       url = "github:NixOS/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    flake-programs-sqlite.url = "github:wamserma/flake-programs-sqlite";
+    flake-programs-sqlite.inputs.nixpkgs.follows = "nixpkgs";
     agsv1.url = "github:dtomvan/agsv1";
     agsv1.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -259,7 +260,7 @@
           inputs.nixos-hardware.nixosModules.huawei-machc-wa
           inputs.nvf.nixosModules.default
           inputs.maomaowm.nixosModules.maomaowm
-
+          inputs.flake-programs-sqlite.nixosModules.programs-sqlite
           {
             nixpkgs.overlays = import ./overlays {
               inherit inputs system;

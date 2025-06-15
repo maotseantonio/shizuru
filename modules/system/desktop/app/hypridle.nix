@@ -17,7 +17,7 @@ in
             sh -c 'notify-send "Locking" && pidoff hyprlock || hyprlock'
           '';
           unlock_cmd = ''notify-send "Unlocked"'';
-          before_sleep_cmd = ''sh -c 'notify-send "Sleeping" && loginctl lock-session' '';
+          before_sleep_cmd = ''sh -c 'notify-send "Sleeping" && hyprctl dispatch dpms off' '';
           after_sleep_cmd = ''sh -c 'notify-send "Woke up" && hyprctl dispatch dpms on' '';
           ignore_dbus_inhibit = false;
           ignore_systemd_inhibit = false;
@@ -29,12 +29,7 @@ in
             timeout = 6000;
             on-timeout = ''sh -c 'notify-send "Idle" && hyprctl dispatch dpms off' '';
             on-resume = ''sh -c 'notify-send "Resumed" && hyprctl dispatch dpms on' '';
-          }
-          {
-            # Lock screen after 20 minutes total idle
-            timeout = 12000;
-            #on-timeout = ''sh -c 'notify-send "Locking after idle" && loginctl lock-session' '';
-          }
+          } 
         ];
       };
     };

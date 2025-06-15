@@ -2,7 +2,8 @@
     imports = [
       ./cliphist.nix 
       ./fuzzel.nix 
-      ./hypridle.nix 
+      ./hypridle.nix
+     # ./swayidle.nix
       ./launcher.nix 
       ./mpv.nix 
       ./walker.nix

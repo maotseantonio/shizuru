@@ -160,8 +160,8 @@
       # Mouse Controls
       "$mainMod , mouse_down , workspace , e+1"
       "$mainMod , mouse_up , workspace , e-1"
-      "$mainMod , period , workspace , e+1"
-      "$mainMod , comma , workspace , e-1"
+      #"$mainMod , period , workspace , e+1"
+      #"$mainMod , comma , workspace , e-1"
       # Keyboard and Display Controls
       ", xf86KbdBrightnessDown , exec , $scriptsDir/BrightnessKbd.sh --dec"
       ", xf86KbdBrightnessUp , exec , $scriptsDir/BrightnessKbd.sh --inc"

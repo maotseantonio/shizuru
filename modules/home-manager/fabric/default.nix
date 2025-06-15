@@ -43,6 +43,7 @@ in
         thefuzz
         numpy
         chardet
+        pydbus
       ];
       extraBuildInputs = [
         nur.repos.HeyImKyu.fabric-gray
