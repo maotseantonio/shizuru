@@ -3383,11 +3383,11 @@
     },
     "nixpkgs_20": {
       "locked": {
-        "lastModified": 1748460289,
-        "narHash": "sha256-7doLyJBzCllvqX4gszYtmZUToxKvMUrg45EUWaUYmBg=",
+        "lastModified": 1748026106,
+        "narHash": "sha256-6m1Y3/4pVw1RWTsrkAK2VMYSzG4MMIj7sqUy7o8th1o=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "96ec055edbe5ee227f28cdbc3f1ddf1df5965102",
+        "rev": "063f43f2dbdef86376cc29ad646c45c46e93234c",
         "type": "github"
       },
       "original": {
@@ -4058,15 +4058,16 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1749738078,
-        "narHash": "sha256-2ra7TMXt4pLaAan0A3fAmb5GjFV8K0rYGrA3s2FW6rY=",
+        "lastModified": 1748614563,
+        "narHash": "sha256-HEocjIsij9k4NjcmI8YRW6yzrYh+i3XN9YkRTr5fzDE=",
         "owner": "LGFae",
         "repo": "swww",
-        "rev": "66d270f446754d987d1220cbe113b1564847a12f",
+        "rev": "ede681538f97dd66afb89400edd2b147a9d9ffaa",
         "type": "github"
       },
       "original": {
         "owner": "LGFae",
+        "ref": "v0.10.1",
         "repo": "swww",
         "type": "github"
       }

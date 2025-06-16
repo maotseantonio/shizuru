@@ -6,6 +6,7 @@
   ...
 }:let 
 wallpaperScript = pkgs.writeScriptBin "niri-wallpaper" (builtins.readFile ./wallpaperAutoChange.sh);
+swww = inputs.swww.packages.${pkgs.system}.swww;
 in 
 {
   imports = [
@@ -15,16 +16,18 @@ in
     ./rules.nix
   ];
 
-   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.gnome-keyring]; 
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.gnome-keyring]; 
   services.arrpc.enable = true;
-  services.swww.enable = true;
+  services.swww = {
+      enable = true;
+      package = swww;
+  };
   home = {
    packages = with pkgs; [
       gnome-keyring
       wl-clipboard
       inputs.astal-bar.packages.${pkgs.system}.default
       inputs.astal.packages.${pkgs.system}.default
-      swww
       wallpaperScript
       seatd
       jaq

@@ -10,7 +10,7 @@ in
 
   config = mkIf cfg.enable {
     hj.rum.programs.hypridle = {
-      enable = true;
+      enable = false;
       settings = {
         general = {
           lock_cmd = ''
@@ -33,27 +33,6 @@ in
         ];
       };
     };
-
-
-  hm.systemd.user.services.hypridle = {
-    Unit = {
-      Description = "Hyprland idle daemon";
-      Documentation = [ "https://wiki.hyprland.org/Hypr-Ecosystem/hypridle" ];
-      PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
-    };
-
-    Service = {
-      ExecStart = "${pkgs.hypridle}/bin/hypridle";
-      Restart = "on-failure";
-      RestartSec = 1;
-    };
-
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
-  };
-
 
     hj.rum.programs.hyprland.settings.misc = {
       key_press_enables_dpms = true;

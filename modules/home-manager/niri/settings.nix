@@ -40,12 +40,10 @@ in {
         (makeCommand "wl-paste --type image --watch cliphist store")
         (makeCommand "wl-paste --type text --watch cliphist store")
         (makeCommand "wl-paste --watch walker --update-clipboard")
-        (makeCommand "swww-wallpaper")
         (makeCommand "swww-daemon")
         (makeCommand "${inputs.astal-bar.packages.${pkgs.system}.default}/bin/kaneru")
-        (makeCommand "uwsm finalize")
-        (makeCommand "eww-bar")
-        (makeCommand "${wallpaperScript}/bin/niri-wallpaper")
+        (makeCommand "uwsm-app eww-bar")
+        (makeCommand "uwsm-app ${wallpaperScript}/bin/niri-wallpaper")
         (makeCommand "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
         (makeCommand "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
         (makeCommand "dbus-update-activation-environment --all")
@@ -54,6 +52,7 @@ in {
       ];
       input = {
         keyboard.xkb.layout = "us";
+        keyboard.xkb.options = "caps:swapescape";
         touchpad = {
           click-method = "button-areas";
           dwt = true;

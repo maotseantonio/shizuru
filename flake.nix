@@ -16,7 +16,7 @@
         inputs.nixpkgs.follows = "nixpkgs";
     };
     swww = {
-        url = "github:LGFae/swww";
+        url = "github:LGFae/swww/v0.10.1";
     };
     agsv1 = {
         url = "github:dtomvan/agsv1";

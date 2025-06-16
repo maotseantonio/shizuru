@@ -10,6 +10,7 @@
   ...
 }:
 with lib; let
+  swww = inputs.swww.packages.${pkgs.system}.swww;
   cfg = config.system.packages;
   qsConfig = ../../../configs/quickshell/qml; 
   quickshell =(inputs.quickshell.packages.${pkgs.system}.default.override {
@@ -70,7 +71,7 @@ in {
       #inputs.walker.packages.${pkgs.system}.default
       gtk-engine-murrine # for gtk themes
       hyprcursor # requires unstable channel
-      hypridle # requires unstable channel
+      #hypridle # requires unstable channel
       imagemagick
       inxi
       jq

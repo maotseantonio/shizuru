@@ -18,8 +18,8 @@ systemd.user.services.swayidle = {
     Environment = "WAYLAND_DISPLAY=wayland-1"; # Change if needed
     ExecStart = ''
       ${pkgs.swayidle}/bin/swayidle -w \
-        timeout 300 '${pkgs.hyprlock}/bin/hyprlock' \
-        timeout 600 '${pkgs.hyprland}/bin/hyprctl dispatch dpms off' \
+        timeout 3000 '${pkgs.hyprlock}/bin/hyprlock' \
+        timeout 1000 '${pkgs.hyprland}/bin/hyprctl dispatch dpms off' \
         resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' \
         before-sleep '${pkgs.hyprlock}/bin/hyprlock'
     '';
