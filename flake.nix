@@ -15,7 +15,9 @@
         url = "github:wamserma/flake-programs-sqlite";
         inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    swww = {
+        url = "github:LGFae/swww";
+    };
     agsv1 = {
         url = "github:dtomvan/agsv1";
         inputs.nixpkgs.follows = "nixpkgs";

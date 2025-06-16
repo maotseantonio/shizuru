@@ -142,5 +142,18 @@
     }
   ];
 in {
-  programs.niri.settings.window-rules = windowRules ++ floatingRules;
+  programs.niri.settings = {
+      window-rules = windowRules ++ floatingRules;
+  };
+  programs.niri.settings.layer-rules = [
+        {
+          matches = [
+           {namespace = "^swww-daemon$";}
+           {namespace = "^wallpaper$";}
+          ];
+          
+          place-within-backdrop = true;
+        }
+    ];
+
 }

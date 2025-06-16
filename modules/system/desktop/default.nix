@@ -1,7 +1,6 @@
 {
     imports = [
       ./app 
-      ./niri 
       ./hyprland
     ];
 }

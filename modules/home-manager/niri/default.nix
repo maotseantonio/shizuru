@@ -10,19 +10,21 @@ in
 {
   imports = [
     inputs.niri.homeModules.niri 
-    #./settings.nix
-    #./binds.nix
-    #./rules.nix
+    ./settings.nix
+    ./binds.nix
+    ./rules.nix
   ];
 
    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.gnome-keyring]; 
   services.arrpc.enable = true;
-  home = { 
-    packages = with pkgs; [
+  services.swww.enable = true;
+  home = {
+   packages = with pkgs; [
       gnome-keyring
       wl-clipboard
       inputs.astal-bar.packages.${pkgs.system}.default
       inputs.astal.packages.${pkgs.system}.default
+      swww
       wallpaperScript
       seatd
       jaq
