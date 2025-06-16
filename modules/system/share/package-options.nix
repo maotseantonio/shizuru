@@ -77,12 +77,12 @@ in {
       jq
       kitty
       libsForQt5.qtstyleplugin-kvantum # kvantum
-      pkgs-master.networkmanagerapplet
+      master.networkmanagerapplet
       nwg-look # requires unstable channel
       nwg-dock-hyprland
       #inputs.hyprswitch.packages.${pkgs.system}.default
-      pkgs-master.pamixer
-      pkgs-master.gitui
+      master.pamixer
+      master.gitui
       pavucontrol
       playerctl
       polkit_gnome
@@ -105,13 +105,13 @@ in {
       nix-ld
       power-profiles-daemon
       fd
-      pkgs-master.home-manager
+      master.home-manager
       bluez-tools
       wgpu-utils
       gtk3
       gtk4
       atuin
-      #bun
+      bun
       zoxide
       dart-sass
       sass
@@ -132,7 +132,8 @@ in {
       komikku
       mangal
       mangareader
-      pkgs-master.tmux
+      master.tmux
+      stable.neofetch
       gtk4
       vivid
       (pkgs.callPackage ../../../pkgs/nitch.nix {})
@@ -140,7 +141,7 @@ in {
       yazi
       #firefox_nightly
       inputs.hyprsunset.packages.${pkgs.system}.hyprsunset
-      pkgs-master.microfetch
+      master.microfetch
       socat
       hyprpicker
       hyprpanel

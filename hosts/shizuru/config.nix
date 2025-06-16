@@ -77,7 +77,7 @@ in
       vaapi-intel-hybrid
       mesa
       egl-wayland
-      pkgs-master.waybar # if wanted experimental next line
+      master.waybar # if wanted experimental next line
       #(pkgs.waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];}))
     ])
     ++ [

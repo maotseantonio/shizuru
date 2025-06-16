@@ -19,6 +19,8 @@ in [
       config.allowUnfree = true;
       config.nvidia.acceptLicense = true;
     };
+    unstable = prev;           # Explicit alias for nixos-unstable
+    master = nixpkgs-master;   # Already defined
     walker = inputs.walker.packages.${system}.default;
     quickshell = inputs.quickshell.packages.${system}.default;
     nvchad = inputs.nvchad4nix.packages.${system}.nvchad;
@@ -38,8 +40,6 @@ in [
         };
       });
     });
-
-    pkgs-master = nixpkgs-master;
 
     sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation rec {
       pname = "sf-mono-liga-bin";
