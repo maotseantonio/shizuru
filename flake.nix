@@ -28,7 +28,10 @@
       url = "github:DreamMaoMao/hycov";
       inputs.hyprland.follows = "hyprland";
     };
-
+    wayland-pipewire-idle-inhibit = {
+        url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
     illogical-impulse = {
       url = "github:maotseantonio/end-4-dots";
       inputs.nixpkgs.follows = "nixpkgs";

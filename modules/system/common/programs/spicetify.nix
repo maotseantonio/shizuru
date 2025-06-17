@@ -8,6 +8,7 @@
   imports = [
       inputs.spicetify-nix.nixosModules.default
   ];
+  hm.services.spotifyd.enable = true;
   programs.spicetify =
     let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};

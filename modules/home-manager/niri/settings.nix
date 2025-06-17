@@ -41,6 +41,7 @@ in {
         (makeCommand "wl-paste --type text --watch cliphist store")
         (makeCommand "wl-paste --watch walker --update-clipboard")
         (makeCommand "swww-daemon")
+        (makeCommand "python /home/antonio/wayland-idle-inhibitor/wayland-idle-inhibitor.py")
         (makeCommand "${inputs.astal-bar.packages.${pkgs.system}.default}/bin/kaneru")
         (makeCommand "uwsm-app eww-bar")
         (makeCommand "uwsm-app ${wallpaperScript}/bin/niri-wallpaper")

@@ -59,6 +59,7 @@ in {
       libinput 
       #qsWrapper 
       #libinput-gestures
+      python313Packages.pywayland
       neovide 
       starship
       cliphist

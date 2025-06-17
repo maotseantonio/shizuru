@@ -31,6 +31,7 @@
     "^(thunar)"
     "^(discord)"
     "^(spotify)"
+    "^(hiddify)"
   ];
 
   floatingRules = builtins.map (appId:
