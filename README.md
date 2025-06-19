@@ -3,11 +3,7 @@
    <br>
       Shizuru  
    <br>
-    <br>
-        My config is provided too much bleeding-edge. If you blindly run my install script, you got headache
-    Now My Main WM is niri the Goat 
-    </br>
-      <img src="./.github/assets/pallet/macchiato.png" width="600px" /> <br>
+     <img src="./.github/assets/pallet/macchiato.png" width="600px" /> <br>
 
    <div align="center">
       <p></p>
@@ -90,13 +86,13 @@
     - [share](modules/system/share) share modules for laptop and desktop
   - [home-manager](home-manager) home-manager config
     - [ags](modules/home-manager/ags) ags home-manager modules(dont use) 
-    - [vscodium](modules/home-manager/editors) editor modules for nvchad
-    - [helix](modules/home-manager/fabric) fabric bar config 
-    - [spicetify](modules/home-manager/hana) desktop related modules
-    - [nvchad](modules/home-manager/media) media related modules
-    - [textfox](modules/home-manager/niri) niri modules and config
-    - [git](modules/home-manager/ui) ui related modules and config
-    - [gtk.nix](modules/home-manager/zellij) zellij(not used) 
+    - [Editor](modules/home-manager/editors) editor modules for nvchad
+    - [Fabric-Bar](modules/home-manager/fabric) fabric bar config 
+    - [Hana](modules/home-manager/hana) desktop related modules
+    - [Media](modules/home-manager/media) media related modules
+    - [Niri](modules/home-manager/niri) niri modules and config
+    - [Ui](modules/home-manager/ui) ui related modules and config
+    - [Zellij](modules/home-manager/zellij) zellij(not used) 
    
 
 ## 📓 Components

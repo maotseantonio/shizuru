@@ -1,1 +1,0 @@
-kubebuilder completion fish | source
