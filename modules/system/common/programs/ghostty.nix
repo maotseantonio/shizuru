@@ -19,7 +19,7 @@
       cursor-style-blink = true;
       adjust-cursor-thickness = 1;
       copy-on-select = false;
-      confirm-close-surface = false; 
+      confirm-close-surface = false;
       window-theme = "ghostty";
       window-padding-x = 4;
       window-padding-y = 6;

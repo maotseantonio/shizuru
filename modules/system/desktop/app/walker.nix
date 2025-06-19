@@ -1,7 +1,10 @@
-
-{ config, lib, pkgs, inputs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
   inherit (lib) mkIf mkEnableOption mkOption;
   inherit (lib.types) nullOr either str path attrs;
   inherit (lib.meta) getExe;
@@ -10,9 +13,8 @@ let
 
   cfg = config.rum.programs.walker;
 
-  defaultPackage = (pkgs.walker or null);
-in
-{
+  defaultPackage = pkgs.walker or null;
+in {
   options.rum.programs.walker = {
     enable = mkEnableOption "Walker application launcher";
 
@@ -68,32 +70,39 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ cfg.package ];
+    environment.systemPackages = [cfg.package];
 
     # Replace environment.etc with hj.files
     hj.files = lib.mkMerge [
       (lib.mkIf (cfg.config != null) {
-        ".config/walker/config.toml" = if lib.isString cfg.config then {
-          text = cfg.config;
-        } else if lib.isPath cfg.config then {
-          source = cfg.config;
-        } else {
-          text = tomlFormat.generate "walker-config" cfg.config;
-        };
+        ".config/walker/config.toml" =
+          if lib.isString cfg.config
+          then {
+            text = cfg.config;
+          }
+          else if lib.isPath cfg.config
+          then {
+            source = cfg.config;
+          }
+          else {
+            text = tomlFormat.generate "walker-config" cfg.config;
+          };
       })
 
       (lib.mkIf (cfg.theme != null) (let
-        layoutEntry = if cfg.theme.layout == null then null else
-          if lib.isPath cfg.theme.layout then
-            { source = cfg.theme.layout; }
-          else
-            { text = tomlFormat.generate "walker-theme-layout" cfg.theme.layout; };
+        layoutEntry =
+          if cfg.theme.layout == null
+          then null
+          else if lib.isPath cfg.theme.layout
+          then {source = cfg.theme.layout;}
+          else {text = tomlFormat.generate "walker-theme-layout" cfg.theme.layout;};
 
-        styleEntry = if cfg.theme.style == null then null else
-          if lib.isPath cfg.theme.style then
-            { source = cfg.theme.style; }
-          else
-            { text = cfg.theme.style; };
+        styleEntry =
+          if cfg.theme.style == null
+          then null
+          else if lib.isPath cfg.theme.style
+          then {source = cfg.theme.style;}
+          else {text = cfg.theme.style;};
       in {
         ".config/walker/themes/default.toml" = layoutEntry;
         ".config/walker/themes/default.css" = styleEntry;
@@ -103,7 +112,7 @@ in
     # systemd user service for walker
     systemd.user.services.walker = mkIf (cfg.systemd.enable && cfg.runAsService) {
       enable = true;
-      wantedBy = [ "graphical-session.target" ];
+      wantedBy = ["graphical-session.target"];
       serviceConfig = {
         ExecStart = "${getExe cfg.package} --gapplication-service";
         Restart = "on-failure";
@@ -112,4 +121,3 @@ in
     };
   };
 }
-

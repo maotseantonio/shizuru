@@ -5,24 +5,24 @@
   username,
   pkgs,
   ...
-}: 
+}:
 with lib; let
   cfg = config.system.zfs;
-in  {
+in {
   options.system.zfs = {
     enable = mkEnableOption "Enable ZFS Modules";
   };
 
   config = mkIf cfg.enable {
-   ### Useful ZFS maintenance ###
-   networking.hostId = "4ea1e462";
-   boot.supportedFilesystems = [ "zfs" ];
-   boot.initrd.supportedFilesystems = [ "zfs" ];
-   boot.zfs.devNodes = "/dev/disk/by-partuuid";
-   boot.zfs.package = pkgs.zfs_cachyos;
-   #boot.zfs.package = pkgs.zfs_unstable;
-   services.zfs = {
-      autoSnapshot= {
+    ### Useful ZFS maintenance ###
+    networking.hostId = "4ea1e462";
+    boot.supportedFilesystems = ["zfs"];
+    boot.initrd.supportedFilesystems = ["zfs"];
+    boot.zfs.devNodes = "/dev/disk/by-partuuid";
+    boot.zfs.package = pkgs.zfs_cachyos;
+    #boot.zfs.package = pkgs.zfs_unstable;
+    services.zfs = {
+      autoSnapshot = {
         enable = true;
         flags = "-k -p --utc";
         monthly = 0;
@@ -40,6 +40,5 @@ in  {
         interval = "weekly";
       };
     };
-
- };
+  };
 }

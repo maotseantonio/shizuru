@@ -14,7 +14,7 @@
     "$files" = "thunar";
     "$term" = "wezterm-gui";
     #bindr = [
-     # "$mainMod , $mainMod_L , exec , pkill rofi || rofi -show drun -modi drun,filebrowser,run,window"
+    # "$mainMod , $mainMod_L , exec , pkill rofi || rofi -show drun -modi drun,filebrowser,run,window"
     #];
     # bindr = [
     #   "$mainMod , $mainMod_L, exec , pkill fuzzel || fuzzel"
@@ -181,11 +181,11 @@
       "ALT , F6 , exec , $scriptsDir/ScreenShot.sh --active"
 
       # Lid Switch Behavior
-      ", switch:Lid Switch , exec , hyprlock && sleep 10 && hyprctl dispatch dpms off" 
+      ", switch:Lid Switch , exec , hyprlock && sleep 10 && hyprctl dispatch dpms off"
       "$mainMod SHIFT , X , exec , ani-cli --rofi"
       "$mainMod SHIFT , V , exec , vesktop"
       "$mainMod , X , exec , pkill rofi || hyprpanel t powermenu"
-      "$mainMod , B , exec , hyprpanel t bar-0" 
+      "$mainMod , B , exec , hyprpanel t bar-0"
       "$mainMod , Return , exec , uwsm app $term"
       "$mainMod , T , exec , uwsm app $files"
       "$mainMod ALT , C , exec , $UserScripts/RofiCalc.sh"

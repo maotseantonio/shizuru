@@ -1,8 +1,8 @@
 {
   imports = [
-      ./desktop 
-      ./drivers
-      ./programs 
-      ./system 
-   ];
+    ./desktop
+    ./drivers
+    ./programs
+    ./system
+  ];
 }

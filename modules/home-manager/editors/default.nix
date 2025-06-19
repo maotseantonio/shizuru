@@ -1,6 +1,6 @@
 {
-    imports = [
-       ./nvchad.nix
- #      ./vscodium.nix
-    ];
+  imports = [
+    ./nvchad.nix
+    #      ./vscodium.nix
+  ];
 }

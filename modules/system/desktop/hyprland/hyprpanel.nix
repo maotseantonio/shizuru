@@ -1,10 +1,14 @@
-{ config, pkgs, inputs, ... }:
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   rum.programs.hyprpanel = {
     enable = true;
     systemd.enable = false;
     hyprland.enable = false;
-   # Put color-related config in override
+    # Put color-related config in override
     themeName = "catppuccin_mocha";
 
     override = {
@@ -47,14 +51,13 @@
 
     # Non-color config goes to settings
     settings = {
-
       bar.layouts = {
         "0" = {
-          left = [ "dashboard" "windowtitle" "volume" "cava" "systray" ];
-          middle = [ "notifications" "workspaces" "updates" ];
-          right = [ "media" "network" "clock" "bluetooth" "battery" "power" ];
-        }; 
-      };    
+          left = ["dashboard" "windowtitle" "volume" "cava" "systray"];
+          middle = ["notifications" "workspaces" "updates"];
+          right = ["media" "network" "clock" "bluetooth" "battery" "power"];
+        };
+      };
       bar.customModules.updates.pollingInterval = 1440000;
       theme.bar.scaling = 85;
       scalingPriority = "both";
@@ -79,7 +82,7 @@
       theme.bar.location = "top";
       bar.autoHide = "never";
       theme.bar.buttons.enableBorders = true;
-      theme.font.name = "JetBrainsMono Nerd Font"; 
+      theme.font.name = "JetBrainsMono Nerd Font";
       theme.font.size = "0.95rem";
       bar.workspaces.show_icons = false;
       bar.workspaces.show_numbered = false;
@@ -110,7 +113,7 @@
       theme.bar.buttons.modules.updates.enableBorder = false;
       menus.dashboard.shortcuts.left.shortcut4.command = "rofi -show drun -theme \"$HOME/.config/rofi/menu.rasi\"";
       notifications.position = "top";
-      
+
       notifications.cache_actions = true;
       notifications.timeout = 2000;
       notifications.clearDelay = 0;
@@ -126,7 +129,7 @@
       bar.customModules.cava.showActiveOnly = true;
       bar.customModules.cava.icon = "";
       bar.customModules.updates.leftClick = "/home/nyx/.config/Scripts/update.sh";
-      
+
       theme.bar.buttons.borderSize = "0.05em";
       theme.bar.border.width = "0.05em";
       theme.osd.location = "right";
@@ -153,7 +156,6 @@
       theme.bar.buttons.y_margins = "0.7em";
       theme.bar.margin_top = "0.2em";
       theme.bar.margin_sides = "5.5em";
-  
     };
   };
 }

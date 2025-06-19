@@ -1,5 +1,5 @@
 {
-    imports = [
-       ./vscodium.nix
-    ];
+  imports = [
+    ./vscodium.nix
+  ];
 }

@@ -34,7 +34,7 @@
       tamasfe.even-better-toml
       usernamehw.errorlens
       yzhang.markdown-all-in-one
-            #catppuccin.catppuccin-vsc
+      #catppuccin.catppuccin-vsc
       #catppuccin.catppuccin-vsc-icons
       ms-vscode.live-server
       visualstudioexptteam.vscodeintellicode
@@ -137,7 +137,7 @@
       theme = {
         "workbench.colorTheme" = "Catppuccin Mocha";
         "workbench.iconTheme" = "catppuccin-mocha";
-                #"catppuccin.accentColor" = "blue";
+        #"catppuccin.accentColor" = "blue";
         "catppuccin.bracketMode" = "rainbow";
         "catppuccin.workbenchMode" = "default";
         "catppuccin.boldKeywords" = true;

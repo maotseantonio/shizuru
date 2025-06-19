@@ -1,10 +1,11 @@
-{  config,
-   inputs,
-   pkgs,
-    ... }:
 {
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
   home.sessionVariables = {
-    NIXOS_OZONE_WL = "1"; 
+    NIXOS_OZONE_WL = "1";
     _JAVA_AWT_WM_NONEREPARENTING = "1";
     SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
     DISABLE_QT5_COMPAT = "0";
@@ -17,12 +18,12 @@
     QT_QPA_PLATFORM = "wayland";
     QT_QPA_PLATFORMTHEME = "qt6ct";
     QT_STYLE_OVERRIDE = "kvantum";
-    MOZ_ENABLE_WAYLAND = "1";  
+    MOZ_ENABLE_WAYLAND = "1";
     WLR_NO_HARDWARE_CURSORS = "1";
     XDG_SESSION_TYPE = "wayland";
     XDG_SESSION_DESKTOP = "Hyprland";
     #ANI_CLI_PLAYER = "vlc";
     SDL_VIDEODRIVER = "wayland";
-    CLUTTER_BACKEND = "wayland"; 
+    CLUTTER_BACKEND = "wayland";
   };
 }

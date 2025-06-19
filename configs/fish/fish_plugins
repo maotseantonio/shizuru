@@ -4,3 +4,6 @@ h-matsuo/fish-color-scheme-switcher
 jorgebucaran/fisher
 lilyball/nix-env.fish
 jorgebucaran/fishtape
+kidonng/nix-completions.fish
+kidonng/completions.fish
+jorgebucaran/hydro

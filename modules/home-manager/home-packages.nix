@@ -7,9 +7,8 @@
   options,
   ...
 }: {
- # Explicitly disable
+  # Explicitly disable
   home.packages = with pkgs; [
-   
     neovide
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qtstyleplugin-kvantum

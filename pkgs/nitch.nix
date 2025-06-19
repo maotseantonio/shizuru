@@ -1,8 +1,8 @@
-{ lib
-,buildNimPackage
-, fetchFromGitHub
+{
+  lib,
+  buildNimPackage,
+  fetchFromGitHub,
 }:
-
 buildNimPackage rec {
   pname = "nitch";
   version = "0.1.6";

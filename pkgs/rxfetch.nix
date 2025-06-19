@@ -30,7 +30,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "custom system fetching tool writing in bash";
     homepage = "https://github.com/maotseantonio/rxfetch";
-    maintainers = with maintainers; [ ByteSudoer ];
+    maintainers = with maintainers; [ByteSudoer];
     license = licenses.mit;
     mainProgram = "rxfetch";
     platforms = platforms.unix;

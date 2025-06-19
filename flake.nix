@@ -1,4 +1,3 @@
-
 {
   description = "MaotseNyein NixOS-Hyprland";
 
@@ -6,21 +5,23 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-
+    fish-flake = {
+        url = "github:maotseantonio/fish-flakes";
+    };
     nix = {
       url = "github:NixOS/nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    }; 
+    };
     flake-programs-sqlite = {
-        url = "github:wamserma/flake-programs-sqlite";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:wamserma/flake-programs-sqlite";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     swww = {
-        url = "github:LGFae/swww/v0.10.1";
+      url = "github:LGFae/swww/v0.10.1";
     };
     agsv1 = {
-        url = "github:dtomvan/agsv1";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:dtomvan/agsv1";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     maomaowm.url = "github:DreamMaoMao/maomaowm";
 
@@ -29,8 +30,8 @@
       inputs.hyprland.follows = "hyprland";
     };
     wayland-pipewire-idle-inhibit = {
-        url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     illogical-impulse = {
       url = "github:maotseantonio/end-4-dots";
@@ -89,9 +90,9 @@
       inputs.disko.follows = "disko";
     };
     matugen = {
-        url = "github:/InioX/Matugen";
-        inputs.nixpkgs.follows = "nixpkgs";
-    }; 
+      url = "github:/InioX/Matugen";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nvf.url = "github:notashelf/nvf";
     yazi.url = "github:sxyazi/yazi";
 
@@ -123,12 +124,18 @@
     hyprland = {
       url = "github:hyprwm/Hyprland";
     };
-    
+
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+    };
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+    };
     hyprland-qt-support = {
-        url = "github:hyprwm/hyprland-qt-support";
+      url = "github:hyprwm/hyprland-qt-support";
     };
     hyprland-qtutils = {
-        url = "github:hyprwm/hyprland-qtutils";
+      url = "github:hyprwm/hyprland-qtutils";
     };
     hyprland-plugins = {
       url = "github:ItsOhen/hyprland-plugins";
@@ -157,13 +164,13 @@
     };
 
     hyprddm.url = "github:maotseantonio/hyprddm";
-
+    sddm-stray.url = "github:maotseantonio/sddm-stray-flakes";
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
- 
+
     ax-shell-config = {
       url = "github:maotseantonio/AX-Shell";
       flake = false;
@@ -228,7 +235,7 @@
       config.allowUnfree = true;
     };
   in {
-    devShells = (pkgs: {
+    devShells = pkgs: {
       quickshell = let
         qs = inputs.quickshell.packages.${pkgs.system}.default.override {
           withJemalloc = true;
@@ -245,18 +252,19 @@
           pkgs.kdePackages.qtbase
           pkgs.kdePackages.qtdeclarative
         ];
-      in pkgs.mkShell {
-        shellHook = let
-          qmlPath = pkgs.lib.pipe qtDeps [
-            (builtins.map (lib: "${lib}/lib/qt-6/qml"))
-            (builtins.concatStringsSep ":")
-          ];
-        in ''
-          export QML2_IMPORT_PATH="$QML2_IMPORT_PATH:${qmlPath}"
-        '';
-        buildInputs = qtDeps;
-      };
-    });
+      in
+        pkgs.mkShell {
+          shellHook = let
+            qmlPath = pkgs.lib.pipe qtDeps [
+              (builtins.map (lib: "${lib}/lib/qt-6/qml"))
+              (builtins.concatStringsSep ":")
+            ];
+          in ''
+            export QML2_IMPORT_PATH="$QML2_IMPORT_PATH:${qmlPath}"
+          '';
+          buildInputs = qtDeps;
+        };
+    };
 
     nixosConfigurations = {
       shizuru = nixpkgs.lib.nixosSystem {
@@ -266,6 +274,7 @@
         modules = [
           ./hosts/${host}/config.nix
           inputs.chaotic.nixosModules.default
+          inputs.fish-flake.nixosModules.myfish
           inputs.home-manager.nixosModules.home-manager
           inputs.stylix.nixosModules.stylix
           inputs.catppuccin.nixosModules.catppuccin

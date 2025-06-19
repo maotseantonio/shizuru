@@ -15,5 +15,5 @@
         #"org.getoutline.OutlineClient"
       ];
     };
-  };  
+  };
 }

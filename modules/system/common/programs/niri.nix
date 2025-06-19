@@ -1,9 +1,12 @@
-
-{ config, lib, pkgs, inputs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
   mkIf = lib.mkIf;
-  kdl = import ./kdl.nix { inherit lib; };
+  kdl = import ./kdl.nix {inherit lib;};
   cfg = config.rum.programs.niri;
 in {
   options.rum.programs.niri = {
@@ -28,10 +31,9 @@ in {
 
   config = mkIf cfg.enable {
     # Add main package + any extras
-    hj.packages = [ cfg.package ] ++ cfg.extraPackages;
+    hj.packages = [cfg.package] ++ cfg.extraPackages;
 
     # Write config.kdl using source (serialized from KDL format)
     hj.files.".config/niri/config.kdl".source = kdl.toKDL cfg.settings;
   };
 }
-

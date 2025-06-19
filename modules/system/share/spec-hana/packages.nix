@@ -10,7 +10,7 @@
       inherit (oldAttrs) pname;
       version = "1.8.2";
     }))
-    brightnessctl # for brightness control 
+    brightnessctl # for brightness control
     cliphist
     eog
     gnome-system-monitor
@@ -53,8 +53,8 @@
     fd
     home-manager
     bluez-tools
-        #gtk3
-        #gtk4
+    #gtk3
+    #gtk4
     #gtkmm4
     #gtkmm3
     fish
@@ -64,12 +64,12 @@
     sassc
     libgtop
     starship
-        #telegram-desktop
-        #vesktop
-        #papirus-folders
-        #papirus-icon-theme
+    #telegram-desktop
+    #vesktop
+    #papirus-folders
+    #papirus-icon-theme
     zoxide
-        #bibata-cursors
-        #spotify
+    #bibata-cursors
+    #spotify
   ];
 }

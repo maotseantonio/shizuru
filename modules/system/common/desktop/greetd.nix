@@ -1,4 +1,3 @@
-
 {
   pkgs,
   config,
@@ -57,13 +56,13 @@ in {
       };
     };
     systemd.services.greetd.serviceConfig = {
-        Type = "idle";
-        StarndardInput = "tty";
-        StarndardOutput = "tty";
-        StandardError = "journal";
-        TTYReset = true; 
-        TTYHangup = true;
-        TTYVTDisallocate = true;
+      Type = "idle";
+      StarndardInput = "tty";
+      StarndardOutput = "tty";
+      StandardError = "journal";
+      TTYReset = true;
+      TTYHangup = true;
+      TTYVTDisallocate = true;
     };
     systemd.extraConfig = "DefaultTimeoutStopSec=1os";
   };

@@ -1,9 +1,9 @@
 {
-    imports = [
-        ./btrfs.nix
-        ./build.nix
-        ./desktop.nix
-        ./packages.nix
-        ./wayland.nix
-    ];
+  imports = [
+    ./btrfs.nix
+    ./build.nix
+    ./desktop.nix
+    ./packages.nix
+    ./wayland.nix
+  ];
 }

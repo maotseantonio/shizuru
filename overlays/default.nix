@@ -1,7 +1,7 @@
-
-{ inputs, system }:
-
-let
+{
+  inputs,
+  system,
+}: let
   nixpkgs-master = import inputs.nixpkgs-master {
     inherit system;
     config.allowUnfree = true;
@@ -19,8 +19,8 @@ in [
       config.allowUnfree = true;
       config.nvidia.acceptLicense = true;
     };
-    unstable = prev;           # Explicit alias for nixos-unstable
-    master = nixpkgs-master;   # Already defined
+    unstable = prev; # Explicit alias for nixos-unstable
+    master = nixpkgs-master; # Already defined
     walker = inputs.walker.packages.${system}.default;
     quickshell = inputs.quickshell.packages.${system}.default;
     nvchad = inputs.nvchad4nix.packages.${system}.nvchad;

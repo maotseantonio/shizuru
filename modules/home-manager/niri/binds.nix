@@ -37,7 +37,7 @@
     "Alt+Tab".action = walkern "-m" "windows";
     "Mod+Shift+X".action = spawn "ani-cli" "--rofi";
     "Alt+Space".action = spawn "${pkgs.anyrun}/bin/anyrun";
-    "Mod+Shift+Return".action = spawn "${pkgs.kitty}/bin/kitty";
+    "Mod+Shift+Return".action = spawn "foot" "--app-id=dropdown";
     "Ctrl+Alt+L".action = spawn "hyprlock";
     "Mod+T".action = spawn "thunar";
     "Mod+U".action = control-center;

@@ -10,13 +10,13 @@
   };
   wallpaperScript = pkgs.writeScriptBin "niri-wallpaper" (builtins.readFile ./wallpaperAutoChange.sh);
 in {
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.gnome-keyring]; 
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.gnome-keyring];
   home.packages = [pkgs.wl-clipboard inputs.astal-bar.packages.${pkgs.system}.default inputs.astal.packages.${pkgs.system}.default wallpaperScript];
 
-   programs.niri = { 
+  programs.niri = {
     enable = true;
     package = pkgs.niri-unstable;
-    settings = { 
+    settings = {
       environment = {
         CLUTTER_BACKEND = "wayland";
         DISPLAY = null;
@@ -33,7 +33,7 @@ in {
         OZONE_PLATFORM = "wayland";
         JAVA_AWT_WM_NONEREPARENTING = "1";
         #ANI_CLI_PLAYER = "vlc";
-         #WAYLAND_DISPLAY = "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY";
+        #WAYLAND_DISPLAY = "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY";
       };
       spawn-at-startup = [
         (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
@@ -70,7 +70,7 @@ in {
         warp-mouse-to-focus.enable = true;
         workspace-auto-back-and-forth = true;
       };
-      overview = { backdrop-color = "#11121d"; };# Tokyo Night background color
+      overview = {backdrop-color = "#11121d";}; # Tokyo Night background color
       screenshot-path = "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png";
       outputs = {
         "eDP-1" = {
@@ -79,16 +79,16 @@ in {
             height = 1440;
             refresh = null;
           };
-          scale = 1.0; 
-        }; 
+          scale = 1.0;
+        };
       };
       cursor = {
         size = 32;
         theme = "LyraR-cursors";
       };
-    layout = {
+      layout = {
         background-color = "transparent";
-        focus-ring.enable = false; 
+        focus-ring.enable = false;
         border = {
           enable = true;
           width = 2;
@@ -123,7 +123,7 @@ in {
           {proportion = 0.75;}
           {proportion = 1.0;}
         ];
-        default-column-width = {proportion = 0.75;};
+        default-column-width = {proportion = 0.55;};
         always-center-single-column = true;
         gaps = 6;
         struts = {
@@ -257,5 +257,5 @@ in {
       Persistent = true;
     };
     Install.WantedBy = ["timers.target"];
-  }; 
+  };
 }

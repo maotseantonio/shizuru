@@ -2,33 +2,35 @@
   inputs,
   pkgs,
   ...
-}:
-let
-    hyprFlake = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalFlake = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-in
-{
-   imports = [ inputs.hyprland.nixosModules.default ];
-   hj.packages = [ 
-       inputs.hyprland-qt-support.packages.${pkgs.system}.default
-       pkgs.libsForQt5.qtstyleplugin-kvantum
-       pkgs.kdePackages.qtstyleplugin-kvantum
-       inputs.hyprland-qtutils.packages.${pkgs.system}.default
-   ];
-   programs = {
+}: let
+  hyprFlake = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  portalFlake = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+in {
+  imports = [inputs.hyprland.nixosModules.default];
+  hj.packages = [
+    inputs.hyprland-qt-support.packages.${pkgs.system}.default
+    pkgs.libsForQt5.qtstyleplugin-kvantum
+    pkgs.kdePackages.qtstyleplugin-kvantum
+    inputs.hyprland-qtutils.packages.${pkgs.system}.default
+    inputs.hypridle.packages.${pkgs.system}.default
+  ];
+  programs = {
     hyprland = {
       enable = true;
       package = hyprFlake;
-      portalPackage = portalFlake; 
-      xwayland.enable = true; 
+      portalPackage = portalFlake;
+      xwayland.enable = true;
     };
     appimage = {
-        enable = true;
-        binfmt = true;
+      enable = true;
+      binfmt = true;
     };
     nix-ld.enable = true;
     waybar.enable = false;
-    hyprlock.enable = true;
+    hyprlock = {
+      enable = true;
+      package = inputs.hyprlock.packages.${pkgs.system}.default;
+    };
     firefox.enable = true;
     git.enable = true;
     nm-applet.indicator = true;
@@ -60,5 +62,4 @@ in
       enableSSHSupport = true;
     };
   };
-  
 }

@@ -12,14 +12,14 @@
     vesktop = {
       enable = true;
       settings = {
-	discordBranch = "canary";
+        discordBranch = "canary";
         staticTitle = false;
         splashTheming = true;
         splashColor = "rgb(186, 194, 222)";
         splashBackground = "rgb(30, 30, 46)";
         arRPC = true;
-        minimizeToTray = true;	
-     };
+        minimizeToTray = true;
+      };
     };
     config = {
       frameless = true;
@@ -127,5 +127,5 @@
         youtubeAdblock.enable = true;
       };
     };
- };
+  };
 }

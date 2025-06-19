@@ -1,11 +1,17 @@
-{ inputs, pkgs, config, lib, ... }:
-
-let
-  inherit (lib)
+{
+  inputs,
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
+  inherit
+    (lib)
     mkEnableOption
     mkOption
     types
-    mkIf;
+    mkIf
+    ;
 
   quickshellPackage = inputs.quickshell.packages.${pkgs.system}.default;
 
@@ -18,8 +24,8 @@ let
 
   qsWrapper = pkgs.symlinkJoin {
     name = "qs-wrapper";
-    paths = [ quickshellPackage ];
-    buildInputs = [ pkgs.makeWrapper ];
+    paths = [quickshellPackage];
+    buildInputs = [pkgs.makeWrapper];
 
     postBuild = let
       qt6Qml = lib.concatMapStringsSep ":" (pkg: "${pkg}/lib/qt-6/qml") qtDeps;
@@ -33,8 +39,8 @@ let
     meta.mainProgram = "quickshell";
   };
 in {
-# Some addition qml module paths needed for qmlls and quickshell
-  environment.variables = let 
+  # Some addition qml module paths needed for qmlls and quickshell
+  environment.variables = let
     extraQmlPaths = [
       # kirigami is wrapped, access the unwrapped version to retrieve binaries/source files
       "${pkgs.kdePackages.kirigami.passthru.unwrapped}/lib/qt-6/qml"
@@ -47,7 +53,7 @@ in {
     QML2_IMPORT_PATH = "$QML2_IMPORT_PATH:${lib.strings.concatStringsSep ":" extraQmlPaths}";
   };
 
-environment.systemPackages = with pkgs;[
+  environment.systemPackages = with pkgs; [
     qsWrapper
     quickshellPackage
     libsForQt5.qtstyleplugin-kvantum
@@ -70,5 +76,3 @@ environment.systemPackages = with pkgs;[
     kdePackages.breeze
   ];
 }
-
-

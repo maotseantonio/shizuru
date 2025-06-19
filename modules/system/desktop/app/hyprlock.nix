@@ -1,6 +1,8 @@
-{ lib, pkgs, ... }:
-
-let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   blazinscripts = pkgs.writeShellScriptBin "hyprlock-blazinscripts" ''
     #!/usr/bin/env bash
     # Battery and Music Status Script
@@ -292,7 +294,7 @@ in {
     };
   };
 
-  home.packages = [ pkgs.playerctl ];
+  home.packages = [pkgs.playerctl];
   systemd.user.tmpfiles.rules = [
     "d ${config.home.homeDirectory}/.cache/hyprlock-art 0755 ${config.home.username} ${config.home.username} - -"
   ];

@@ -58,11 +58,17 @@
 </p>
 
 
+## ✨ Features
 
-# 🗃️ Overview
-### My config was different from JaKooLit NixOS-Hyprland. Dont use my install script. it is just for me. and my config is now under heavy development. 
-### i move to hjem and hjem-rum. so it breaks for some time.
-### Now My Primary WM is Niri But I also update my hyprland and its config. good luck have fun. 
+- ❄️ Flakes - for precise dependency management of the entire system.
+- 🏡 hjem - to configure symlink to user directory.
+- 💽 hjem-rum - hjem with modules system support.
+- 📁 home-manager - on this time i do not fully change to hjem and hjem-rum so optional.
+- ⚠️ Hyprland - As my window manager But secondary.  
+- 💈 Niri - My Main WM.
+- 💽 QuickShell - for my desktop enviornment.
+
+
 ## 📚 Layout
 
 -   [flake.nix](flake.nix) base of the configuration
@@ -73,42 +79,25 @@
         - [hardware](hosts/shizuru/hardware.nix) hardware configuration
         - [user](hosts/shizuru/user.nix) user specific packages(shell)
         - [variables](hosts/shizuru/variables.nix) user variables git username email
+        - [hjem](hosts/shizuru/hjem.nix) hjem and hjem-rum modules 
+        - [home](hosts/shizuru/home.nix) home-manager module
+        - [theme](hosts/shizuru/theme.nix) theme related config
 -   [modules](modules) 🍱 for more modularize
   - [system](system) for system wide config
-    - [bootloader](modules/system/bootloader.nix) kernel packages(cachyos kernel) grub2 plymouth theme(catppuccin)
-    - [flatpak](modules/system/flatpak.nix) declarative flatpak
-    - [fonts](modules/system/fonts.nix) fonts packages
-    - [hardwareconf](modules/system/hardwareconf.nix) hardware configuration
-    - [intel-driver](modules/system/intel-driver.nix) intel graphic intel-driver
-    - [nvidia-driver](modules/system/nvidia-driver) nvidia graphic driver
-    - [local-hardware-clock](modules/system/local-hardware-clock.nix)hardware clock(i dontknow this will be needed)
-    - [network](modules/system/network.nix) network configuration 
-    - [nvidia-prime](modules/system/nvidia-prime-driver) nvidia prime configuration
-    - [nvidia-patch](modules/system/nvidia-patch) nvidia patch for linux 6.12 kernel
-    - [services](modules/system/services.nix) services for nix system
-    - [system](modules/system/system.nix) system specific packages and settings
-    - [virtualization](modules/system/virtualization.nix) virtualization specific packages
-    - [wayland](modules/system/wayland.nix) wayland specific packages
-    - [packages](modules/system/packages.nix) packages config
-    - [nix](modules/system/nix.nix) nix related settings
-    - [niri](modules/system/niri.nix) niri flake for nixos
+    - [common](modules/system/common) kernel packages(cachyos kernel) systemd boot plymouth theme(catppuccin)
+    - [desktop](modules/system/desktop) desktop related modules
+    - [options](modules/system/options) options for laptop and desktop
+    - [share](modules/system/share) share modules for laptop and desktop
   - [home-manager](home-manager) home-manager config
-    - [home](modules/home-manager/home.nix) home-manager config 
-    - [vscodium](modules/home-manager/vscodium.nix) vscodium config 
-    - [helix](modules/home-manager/helix.nix) helix config 
-    - [spicetify](modules/home-manager/spicetify.nix) spotify client config
-    - [nvchad](modules/home-manager/nvchad.nix) nvchad config
-    - [textfox](modules/home-manager/textfox.nix)textfox config
-    - [git](modules/home-manager/git)git config 
-    - [gtk.nix](modules/home-manager/gtk.nix) themeing related 
-    - [nixcord](modules/home-manager/nixcord.nix) vencord for nix way 
-    - [HyprPanel](modules/home-manager/hyprpanel.nix) hm module for hyprpanel 
-    - [nixy](modules/home-manager/nixy.nix) system utilities
-    - [hom-packages](modules/home-manager/home-packages.nix) packages for user specific 
-    - [fhsenv](modules/home-manager/fhsenv.nix) fhs enviornment(will remove in 25.11)
-    - [anyrun](modules/home-manager/anyrun) anyrun for application launcher 
-    - [niri](modules/home-manager/niri) niri settings via home-manager
-
+    - [ags](modules/home-manager/ags) ags home-manager modules(dont use) 
+    - [vscodium](modules/home-manager/editors) editor modules for nvchad
+    - [helix](modules/home-manager/fabric) fabric bar config 
+    - [spicetify](modules/home-manager/hana) desktop related modules
+    - [nvchad](modules/home-manager/media) media related modules
+    - [textfox](modules/home-manager/niri) niri modules and config
+    - [git](modules/home-manager/ui) ui related modules and config
+    - [gtk.nix](modules/home-manager/zellij) zellij(not used) 
+   
 
 ## 📓 Components
 |                             | NixOS + Hyprland                                                                              |

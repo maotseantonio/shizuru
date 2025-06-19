@@ -18,7 +18,7 @@ window#waybar > box {
     border-radius: 8px;
     
     border: 1px solid rgba(69, 71, 90, 1.0);
-    margin-left: 8px;
+    margin-left: 1px;
     background-color:  #11111b;
     /* box-shadow: 2px 3px 3px 1px #000000; */
 }

@@ -9,7 +9,6 @@
   system,
   ...
 }: {
-
   xdg.portal = {
     enable = true;
     wlr.enable = false;
@@ -21,7 +20,7 @@
       pkgs.xdg-desktop-portal
     ];
   };
-   powerManagement = {
+  powerManagement = {
     enable = true;
     cpuFreqGovernor = "schedutil";
   };
@@ -52,4 +51,4 @@
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
- }
+}

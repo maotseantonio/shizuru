@@ -127,7 +127,7 @@
         };
 
         dashboard = {
-           alpha.enable = true;
+          alpha.enable = true;
         };
 
         utility = {

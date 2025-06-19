@@ -23,14 +23,14 @@
     enable = true;
     xdgOpenUsePortal = true;
     config = {
-      common.default = [ "gtk" ];
+      common.default = ["gtk"];
       hyprland.default = [
         "gtk"
         "hyprland"
       ];
     };
 
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
   environment.systemPackages = with pkgs; [
     wget
@@ -56,6 +56,6 @@
     xdg-utils
     hyprpicker
     fastfetch
-  ]; 
+  ];
   system.stateVersion = "25.05";
 }

@@ -4,26 +4,25 @@
   lib,
   config,
   ...
-}:let 
-wallpaperScript = pkgs.writeScriptBin "niri-wallpaper" (builtins.readFile ./wallpaperAutoChange.sh);
-swww = inputs.swww.packages.${pkgs.system}.swww;
-in 
-{
+}: let
+  wallpaperScript = pkgs.writeScriptBin "niri-wallpaper" (builtins.readFile ./wallpaperAutoChange.sh);
+  swww = inputs.swww.packages.${pkgs.system}.swww;
+in {
   imports = [
-    inputs.niri.homeModules.niri 
+    inputs.niri.homeModules.niri
     ./settings.nix
     ./binds.nix
     ./rules.nix
   ];
 
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.gnome-keyring]; 
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.gnome-keyring];
   services.arrpc.enable = true;
   services.swww = {
-      enable = true;
-      package = swww;
+    enable = true;
+    package = swww;
   };
   home = {
-   packages = with pkgs; [
+    packages = with pkgs; [
       gnome-keyring
       wl-clipboard
       inputs.astal-bar.packages.${pkgs.system}.default
@@ -45,7 +44,7 @@ in
     sessionVariables = {
       QT_QPA_PLATFORMTHEME = "qt6ct";
       QT_STYLE_OVERRIDE = "kvantum";
-      XDG_SESSION_TYPE = "wayland";  
+      XDG_SESSION_TYPE = "wayland";
     };
   };
 
@@ -66,23 +65,20 @@ in
     Install.WantedBy = ["timers.target"];
   };
   systemd.user.services.wayland-satalite = {
-	 Unit = {
-	   Description = "Xwayland Satalite Service";
-	   After = " config.wayland.systemd.target";
-	   PartOf = " config.wayland.systemd.target";
-      };
-      Install.WantedBy = [ "config.wayland.systemd.target "];
-      Service = {
-	     Type = "simple";
-         ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
-         Restart = "on-failure"; 
-         Environment = [
-             "WAYLAND_DISPLAY=wayland-1"
-             "XDG_RUNTIME_DIR=/run/user/%U"
-          ];
-
-        };
-
-      };
- 
+    Unit = {
+      Description = "Xwayland Satalite Service";
+      After = " config.wayland.systemd.target";
+      PartOf = " config.wayland.systemd.target";
+    };
+    Install.WantedBy = ["config.wayland.systemd.target "];
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
+      Restart = "on-failure";
+      Environment = [
+        "WAYLAND_DISPLAY=wayland-1"
+        "XDG_RUNTIME_DIR=/run/user/%U"
+      ];
+    };
+  };
 }

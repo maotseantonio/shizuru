@@ -1,18 +1,21 @@
-{ config, pkgs, ... }:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   notifyScript = pkgs.writeShellScriptBin "rebuild-notify" ''
     # Wait for user session to be ready
     USER="antonio"
     export XDG_RUNTIME_DIR="/run/user/$(id -u $USER)"
     export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
-    
+
     # Wait for bus to be available
     timeout=30
     while [ ! -S "$XDG_RUNTIME_DIR/bus" ] && [ $timeout -gt 0 ]; do
       sleep 1
       timeout=$((timeout-1))
     done
-    
+
     if [ ! -S "$XDG_RUNTIME_DIR/bus" ]; then
       echo "Failed to connect to user bus"
       exit 0
@@ -30,24 +33,24 @@ let
 in {
   # Enable lingering for the user
   systemd.tmpfiles.rules = [
-    "d /run/user/1000 0755 antonio users -"  # Replace 1000 with actual UID
+    "d /run/user/1000 0755 antonio users -" # Replace 1000 with actual UID
   ];
 
   # User service for notifications
   systemd.user.services.rebuild-notify = {
     unitConfig = {
       Description = "Post-rebuild notification";
-      After = [ "graphical-session.target" ];
-      Requires = [ "graphical-session.target" ];
+      After = ["graphical-session.target"];
+      Requires = ["graphical-session.target"];
     };
-    
+
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${notifyScript}/bin/rebuild-notify";
       Restart = "no";
     };
-    
-    wantedBy = [ "default.target" ];
+
+    wantedBy = ["default.target"];
   };
 
   # Trigger notification after rebuild
@@ -57,7 +60,7 @@ in {
       ${pkgs.systemd}/bin/systemctl --user start rebuild-notify.service
     fi
   '';
-  
+
   # Required packages
   environment.systemPackages = with pkgs; [
     libnotify

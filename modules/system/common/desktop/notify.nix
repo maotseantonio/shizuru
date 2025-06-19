@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   username = "antonio"; # CHANGE THIS to your username
-  
+
   # 1. NH wrapper with immediate notification
   nhWithNotify = pkgs.writeShellScriptBin "nh" ''
     # Initial notification (shows before sudo prompt)
@@ -25,28 +27,28 @@ let
     #!/bin/sh
     export XDG_RUNTIME_DIR="/run/user/$(id -u ${username})"
     export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
-    
+
     ${pkgs.libnotify}/bin/notify-send -i nix-snowflake \
       "NixOS Rebuild" \
       "System configuration applied successfully!"
   '';
 in {
   # NH wrapper configuration
-   # Required packages
+  # Required packages
   environment.systemPackages = with pkgs; [
     libnotify
     notifyScript
     nhWithNotify
   ];
-   environment.shellAliases.nh = "${nhWithNotify}/bin/nh";
+  environment.shellAliases.nh = "${nhWithNotify}/bin/nh";
 
   # Systemd service configuration
   systemd.services.post-rebuild-notify = {
     description = "Notify after NixOS rebuild";
-    after = [ "nixos-rebuild.service" "nh-apply.service" ];
-    wants = [ "nixos-rebuild.service" "nh-apply.service" ];
-    wantedBy = [ "multi-user.target" ];
-    
+    after = ["nixos-rebuild.service" "nh-apply.service"];
+    wants = ["nixos-rebuild.service" "nh-apply.service"];
+    wantedBy = ["multi-user.target"];
+
     serviceConfig = {
       Type = "oneshot";
       User = username;
@@ -54,10 +56,6 @@ in {
     };
   };
 
- 
-
   # Ensure DBUS is properly configured
-  services.dbus.packages = [ pkgs.dconf ];
+  services.dbus.packages = [pkgs.dconf];
 }
-
-

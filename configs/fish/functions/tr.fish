@@ -1,3 +1,3 @@
-function tr --wraps=trash --description 'alias tr=trash'
+function trh --wraps=trash --description 'alias tr=trash'
     trash $argv
 end

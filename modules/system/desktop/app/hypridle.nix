@@ -1,9 +1,12 @@
-{ lib, pkgs, config, ... }:
-let
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.mine.hypridle;
-in
-{
+in {
   options.mine.hypridle = {
     enable = mkEnableOption "Enable Hypridle service";
   };
@@ -29,7 +32,7 @@ in
             timeout = 6000;
             on-timeout = ''sh -c 'notify-send "Idle" && hyprctl dispatch dpms off' '';
             on-resume = ''sh -c 'notify-send "Resumed" && hyprctl dispatch dpms on' '';
-          } 
+          }
         ];
       };
     };
@@ -40,5 +43,3 @@ in
     };
   };
 }
-
-

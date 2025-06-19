@@ -32,6 +32,8 @@
     "^(discord)"
     "^(spotify)"
     "^(hiddify)"
+    "^(kitty)"
+    "^(com.mitchellh.ghostty)"
   ];
 
   floatingRules = builtins.map (appId:
@@ -56,7 +58,7 @@
     }
     {
       matches = [{app-id = "^niri$";}];
-              opacity = 1.0;
+      opacity = 1.0;
     }
     {
       matches = [{is-focused = false;}];
@@ -141,20 +143,36 @@
       ];
       opacity = 0.96;
     }
+    {
+      matches = [
+        {app-id = "^(dropdown)$";}
+      ];
+      open-floating = true;
+      default-floating-position = {
+        x = 0;
+        y = 0;
+        relative-to = "top";
+      };
+      default-window-height = {
+        proportion = 0.5;
+      };
+      default-column-width = {
+        proportion = 0.5;
+      };
+    }
   ];
 in {
   programs.niri.settings = {
-      window-rules = windowRules ++ floatingRules;
+    window-rules = windowRules ++ floatingRules;
   };
   programs.niri.settings.layer-rules = [
-        {
-          matches = [
-           {namespace = "^swww-daemon$";}
-           {namespace = "^wallpaper$";}
-          ];
-          
-          place-within-backdrop = true;
-        }
-    ];
+    {
+      matches = [
+        {namespace = "^swww-daemon$";}
+        {namespace = "^wallpaper$";}
+      ];
 
+      place-within-backdrop = true;
+    }
+  ];
 }

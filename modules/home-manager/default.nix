@@ -5,12 +5,12 @@
   ...
 }: {
   imports = [
-    ./ags 
+    ./ags
     ./fabric
-    ./niri 
-    ./editors 
-    ./ui 
-    ./media 
-#   ./zellij
+    ./niri
+    ./editors
+    ./ui
+    ./media
+    #   ./zellij
   ];
 }

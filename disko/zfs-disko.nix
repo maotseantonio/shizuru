@@ -26,10 +26,10 @@
             swap = {
               size = "16G";
               content = {
-              type = "swap";
-              resumeDevice = true;
+                type = "swap";
+                resumeDevice = true;
+              };
             };
-           };
           };
         };
       };

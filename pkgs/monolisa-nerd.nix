@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
   src = monolisa;
 
   nativeBuildInputs =
-    [ nerd-font-patcher ]
+    [nerd-font-patcher]
     ++ (with python3Packages; [
       python
       fontforge

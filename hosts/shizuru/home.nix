@@ -10,10 +10,9 @@
 }: {
   imports = [
     inputs.catppuccin.homeModules.catppuccin
-    ../../modules/home-manager 
+    ../../modules/home-manager
   ];
 
- 
   programs.direnv = {
     enable = true;
     enableFishIntegration = true;
@@ -27,7 +26,7 @@
   programs.gh = {
     enable = true;
     package = pkgs.gh;
-  }; 
+  };
   programs.imv = {
     enable = true;
   };
@@ -43,12 +42,12 @@
   #     accent = "green";
   #     flavor = "mocha";
   # };
-  services.mako.enable = false; 
+  services.mako.enable = false;
   services.arrpc = {
-      enable = true;
-      systemdTarget = "graphical-session.target";
+    enable = true;
+    systemdTarget = "graphical-session.target";
   };
- 
+
   home.file = {
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
@@ -61,19 +60,18 @@
     BROWSER = "firefox";
   };
   systemd.user.services.walker = {
-	Unit = {
-	   Description = "walker autostart";
-	   After = "config.wayland.systemd.target";
-	   PartOf = "config.wayland.systemd.target";
+    Unit = {
+      Description = "walker autostart";
+      After = "config.wayland.systemd.target";
+      PartOf = "config.wayland.systemd.target";
+    };
+    Install.WantedBy = ["config.wayland.systemd.target"];
+    Service = {
+      Type = "simple";
+      ExecStart = "${inputs.walker.packages.${pkgs.system}.default}/bin/walker --gapplication-service";
+      Restart = "on-failure";
+    };
   };
-  Install.WantedBy = [ "config.wayland.systemd.target"];
-  Service = {
-	Type = "simple";
-    ExecStart = "${inputs.walker.packages.${pkgs.system}.default}/bin/walker --gapplication-service";
-    Restart = "on-failure";	
-  };
-
- }; 
   #home.backupFileExtension = "bkp";
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

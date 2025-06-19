@@ -9,7 +9,6 @@
   system,
   ...
 }: {
-  
   services = {
     xserver = {
       enable = true;
@@ -21,7 +20,7 @@
         variant = "";
       };
     };
-    
+
     smartd = {
       enable = false;
       autodetect = true;
@@ -29,7 +28,7 @@
 
     gvfs.enable = true;
     tumbler.enable = true;
-    udev.enable = true; 
+    udev.enable = true;
     envfs.enable = true;
     dbus.enable = true;
     dbus.packages = with pkgs; [
@@ -65,7 +64,7 @@
 
     #ipp-usb.enable = true;
 
-   # syncthing = {
+    # syncthing = {
     # enable = false;
     # user = "${username}";
     # dataDir = "/home/${username}";

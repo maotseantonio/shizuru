@@ -1,6 +1,6 @@
 {
-    imports = [
-      ./app 
-      ./hyprland
-    ];
+  imports = [
+    ./app
+    ./hyprland
+  ];
 }

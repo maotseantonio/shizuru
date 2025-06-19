@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkOption mkEnableOption mkPackageOption;
   inherit (lib.meta) getExe;
@@ -21,12 +24,12 @@ in {
 
     hyprland.enable = mkEnableOption "Integrate with Hyprland exec-once";
 
- themeName = mkOption {
-    type = types.str;
-    default = "catppuccin_mocha";
-    example = "catppuccin_mocha";
-    description = "Theme name to load from a file at ../themes/<themeName>.json.";
-  };
+    themeName = mkOption {
+      type = types.str;
+      default = "catppuccin_mocha";
+      example = "catppuccin_mocha";
+      description = "Theme name to load from a file at ../themes/<themeName>.json.";
+    };
 
     override = mkOption {
       type = json.type;
@@ -84,20 +87,19 @@ in {
   };
 
   config = mkIf cfg.enable {
-    hj.packages = [ cfg.package ];
+    hj.packages = [cfg.package];
 
-    hj.files.".config/hyprpanel/config.json".source =
-      mkIf (cfg.settings != {}) (
-        json.generate "hyprpanel-config.json"
-          (cfg.settings // themeFile // cfg.override)
-      );
+    hj.files.".config/hyprpanel/config.json".source = mkIf (cfg.settings != {}) (
+      json.generate "hyprpanel-config.json"
+      (cfg.settings // themeFile // cfg.override)
+    );
 
     hj.rum.programs.hyprland.settings.exec-once =
-      mkIf cfg.hyprland.enable [ (getExe cfg.package) ];
+      mkIf cfg.hyprland.enable [(getExe cfg.package)];
 
     systemd.user.services.hyprpanel = mkIf cfg.systemd.enable {
       description = "HyprPanel status bar for graphical session";
-      wantedBy = [ "graphical-session.target" ];
+      wantedBy = ["graphical-session.target"];
       serviceConfig = {
         ExecStart = "${getExe cfg.package}";
         ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR1 $MAINPID";
@@ -108,4 +110,3 @@ in {
     };
   };
 }
-

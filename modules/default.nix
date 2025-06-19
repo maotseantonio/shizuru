@@ -1,5 +1,5 @@
 {
-    imports = [
-      ./system/options/shizuru.nix
-    ];
+  imports = [
+    ./system/options/shizuru.nix
+  ];
 }

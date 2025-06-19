@@ -11,24 +11,19 @@
 }:
 with lib; let
   cfg = config.system.displayManager;
+  #sddm-stray = pkgs.callPackage ../../../../pkgs/stray-new.nix { };
 in {
   options.system.displayManager = {
     enable = mkEnableOption "Enable Display Manager Services";
   };
 
   config = mkIf cfg.enable {
-  environment.systemPackages = [
-      (
-        pkgs.catppuccin-sddm.override {
-          flavor = "mocha";
-          font = "JetBrainsMono Nerd Font";
-          fontSize = "12";
-          #background = "${wallpapers.primary}"; # for some reason, this doesn't work rn
-          loginBackground = true;
-        }
-      )
+    environment.systemPackages = [
+      #   sddm-stray
       pkgs.lyra-cursors
-    ]; 
+      inputs.hyprddm.packages.${pkgs.system}.default
+      inputs.sddm-stray.packages.${pkgs.system}.default
+    ];
 
     services.xserver.enable = true;
     services.displayManager.defaultSession = "hyprland-uwsm";
@@ -39,11 +34,10 @@ in {
         kdePackages.qtsvg
         kdePackages.qtmultimedia
         kdePackages.qtvirtualkeyboard
-
       ];
       wayland.enable = true;
       #theme = "sddm-astronaut-theme";
-      theme = "catppuccin-mocha";
+      theme = "sddm-theme-stray";
       settings = {
         Theme = {
           CursorTheme = "LyraS-cursors";
@@ -58,14 +52,14 @@ in {
         binPath = "/run/current-system/sw/bin/Hyprland";
       };
       niri = {
-          prettyName = "Niri The Goat";
-          comment = "Niri";
-          binPath = "/run/current-system/sw/bin/niri-session";
+        prettyName = "Niri The Goat";
+        comment = "Niri";
+        binPath = "/run/current-system/sw/bin/niri-session";
       };
       maomao = {
-          prettyName = "MaoMao-WM";
-          comment = "maomao";
-          binPath = "/run/current-system/sw/bin/maomao";
+        prettyName = "MaoMao-WM";
+        comment = "maomao";
+        binPath = "/run/current-system/sw/bin/maomao";
       };
     };
   };

@@ -10,28 +10,25 @@
   outputs,
   system,
   ...
-}:
-let
-
+}: let
   inherit (import ./variables.nix) keyboardLayout;
   python-packages = pkgs.python3.withPackages (
-    ps: with ps; [
-      requests
-      pyquery # needed for hyprland-dots Weather script
-    ]
+    ps:
+      with ps; [
+        requests
+        pyquery # needed for hyprland-dots Weather script
+      ]
   );
-
-in
-{
+in {
   imports = [
     ./hardware.nix
     ./users.nix
-    ./hjem.nix 
+    ./hjem.nix
     ./themes.nix
     ../../modules
-   ];
+  ];
 
- #drivers.amdgpu.enable = false;
+  #drivers.amdgpu.enable = false;
   drivers.intel.enable = true;
   drivers.nvidia.enable = true;
   drivers.nvidia-prime = {
@@ -65,10 +62,9 @@ in
   nixpkgs.config.allowBroken = true;
   users = {
     mutableUsers = true;
-  }; 
+  };
   environment.systemPackages =
     (with pkgs; [
-
       libva-utils
       libvdpau-va-gl
       intel-compute-runtime
@@ -103,7 +99,7 @@ in
     # Use NVIDIA for VDPAU           # Default to Intel for Wayland
     GBM_BACKEND = "nvidia-drm";
     NIXPKGS_ALLOW_UNFREE = "1";
-    WLR_NO_HARDWARE_CURSORS = "1";       # Fix cursor issues in Hyprland
+    WLR_NO_HARDWARE_CURSORS = "1"; # Fix cursor issues in Hyprland
     __GLX_VENDOR_LIBRARY_NAME = "nvidia"; # NVIDIA GLX (when offloading)# Best for HD 620 (Kaby Lake)
   };
   system.stateVersion = "25.05"; # Did you read the comment?

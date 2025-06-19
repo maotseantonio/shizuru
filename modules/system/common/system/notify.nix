@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # 1. Add required packages
-  environment.systemPackages = with pkgs; [ 
-    libnotify 
-    sound-theme-freedesktop 
+  environment.systemPackages = with pkgs; [
+    libnotify
+    sound-theme-freedesktop
   ];
 
   # 2. Systemd service that triggers on ANY successful rebuild
@@ -16,13 +14,14 @@
       ExecStart = let
         notify = "${pkgs.libnotify}/bin/notify-send";
         sound = "${pkgs.sound-theme-freedesktop}/bin/canberra-gtk-play";
-      in pkgs.writeShellScript "rebuild-notify" ''
-        # Only notify for 'switch' operations
-        if [[ "%I" == *switch* ]]; then
-          ${notify} -i nix-snowflake "NixOS Rebuild" "System configuration applied successfully!"
-          ${sound} -d complete
-        fi
-      '';
+      in
+        pkgs.writeShellScript "rebuild-notify" ''
+          # Only notify for 'switch' operations
+          if [[ "%I" == *switch* ]]; then
+            ${notify} -i nix-snowflake "NixOS Rebuild" "System configuration applied successfully!"
+            ${sound} -d complete
+          fi
+        '';
     };
   };
 
@@ -38,6 +37,6 @@
       RemainAfterExit = true;
       Type = "oneshot";
     };
-    wantedBy = [ "default.target" ];
+    wantedBy = ["default.target"];
   };
 }

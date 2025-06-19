@@ -1,6 +1,6 @@
 {
-    imports = [
-      ./nixcord.nix
-      ./textfox.nix
-    ];
+  imports = [
+    ./nixcord.nix
+    ./textfox.nix
+  ];
 }
