@@ -13,20 +13,20 @@ with lib; let
   cfg = config.system.kernel;
 in {
   options.system.kernel = {
-    enable = mkEnableOption "Enable kernel";
+    enable = mkEnableOption "Enable custom kernel configuration";
   };
 
   config = mkIf cfg.enable {
     boot = {
+      # Use CachyOS kernel with patched v4l2loopback
       kernelPackages = let
         apply = _: prevModules: {
           v4l2loopback =
-            if lib.strings.hasPrefix "0.13.2" prevModules.v4l2loopback.version
+            if strings.hasPrefix "0.13.2" prevModules.v4l2loopback.version
             then
-              prevModules.v4l2loopback.overrideAttrs
-              (_: rec {
+              prevModules.v4l2loopback.overrideAttrs (_: rec {
                 version = "0.15.0";
-                src = final.fetchFromGitHub {
+                src = pkgs.fetchFromGitHub {
                   owner = "umlaeute";
                   repo = "v4l2loopback";
                   rev = "v${version}";
@@ -37,8 +37,9 @@ in {
         };
       in
         pkgs.linuxPackages_cachyos.extend apply;
-      #kernelPackages = pkgs.linuxKernel.packages.linux_zen.zfs_unstable;
+
       consoleLogLevel = 0;
+
       kernelParams = [
         "quiet"
         "splash"
@@ -50,20 +51,32 @@ in {
         "systemd.mask=systemd-vconsole-setup.service"
         "systemd.mask=dev-tpmrm0.device"
         "nowatchdog"
-        "nvidia-drm.modeset=1"
-        "nvidia-drm.fbdev=1"
         "modprobe.blacklist=iTCO_wdt"
         "nohibernate"
-        "i915.enable_guc=2" # 2=GuC + HuC, 1=GuC only, 0=disable
-        "i915.fastboot=1" # Faster boot times
-        "i915.enable_psr=0"
       ];
-      kernelModules = ["v4l2loopback" "kvm-intel" "drm"];
-      extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
+
+      kernelModules = [
+        "v4l2loopback"
+        "kvm-intel"
+        "drm"
+      ];
+
+      extraModulePackages = [
+        config.boot.kernelPackages.v4l2loopback
+      ];
+
       initrd = {
         verbose = false;
-        availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"];
-        kernelModules = ["i915"];
+        availableKernelModules = [
+          "xhci_pci"
+          "ahci"
+          "nvme"
+          "usb_storage"
+          "usbhid"
+          "sd_mod"
+        ];
+
+        kernelModules = []; # GPU kernel modules removed here
       };
     };
   };

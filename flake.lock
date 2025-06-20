@@ -583,11 +583,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1750341325,
-        "narHash": "sha256-rnNBXCF8FLADyBqDYkarD9Eo20TvlfYeM0yuC26howA=",
+        "lastModified": 1750423167,
+        "narHash": "sha256-sBDZYACeQFZojOalgcsKheowqjYzyRy4enwU2SqJm5s=",
         "owner": "maotseantonio",
         "repo": "fish-flakes",
-        "rev": "b8345213e0915c7f5b24f516418ff6e113e841e6",
+        "rev": "435010f894330e0d0fd2128ecd891fa76a5e5cb1",
         "type": "github"
       },
       "original": {

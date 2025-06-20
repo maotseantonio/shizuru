@@ -28,7 +28,7 @@ in {
     ../../modules
   ];
 
-  #drivers.amdgpu.enable = false;
+  # GPU drivers
   drivers.intel.enable = true;
   drivers.nvidia.enable = true;
   drivers.nvidia-prime = {
@@ -36,6 +36,8 @@ in {
     intelBusID = "PCI:0:2:0";
     nvidiaBusID = "PCI:1:0:0";
   };
+
+  # System services
   vm.guest-services.enable = false;
   local.hardware-clock.enable = true;
   system.packages.enable = true;
@@ -48,21 +50,20 @@ in {
   system.greetd.enable = false;
   system.powermanagement.enable = true;
   system.scheduler.enable = true;
-  #myOptions.cliphist.enable = false;
   mine.hypridle.enable = false;
-  #system.btrfs.enable = false;
   system.zfs.enable = true;
   system.zram.enable = true;
-  #boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
   catppuccin.tty.enable = true;
-  programs.command-not-found.enable = true;
-  services.xserver.videoDrivers = ["modesetting" "nvidia"];
+
+  # Drivers to load (use "nvidia" and "modesetting" for XWayland fallback)
+  services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
+
+  # Nixpkgs and users
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
-  users = {
-    mutableUsers = true;
-  };
+  users.mutableUsers = true;
+
+  # Packages
   environment.systemPackages =
     (with pkgs; [
       libva-utils
@@ -73,34 +74,28 @@ in {
       vaapi-intel-hybrid
       mesa
       egl-wayland
-      master.waybar # if wanted experimental next line
-      #(pkgs.waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];}))
-    ])
-    ++ [
-      python-packages
-    ];
-  # OpenGL
-  hardware.graphics = {
-    enable = true;
-  };
+      master.waybar
+    ]) ++ [ python-packages ];
+
+  # OpenGL config
+  hardware.graphics.enable = true;
+
+  # Console
   console.keyMap = "${keyboardLayout}";
-  # For Electron apps to use wayland
-  environment.variables = {
-    VDAPU_DRIVER = lib.mkIf config.hardware.graphics.enable (lib.mkDefault "va_gl");
-  };
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  # Wayland support for apps like Electron
   environment.sessionVariables = {
     EDITOR = "nvim";
     BROWSER = "firefox";
     TERMINAL = "wezterm";
     VISUAL = "vscodium";
     GSK_RENDERER = "gl";
-    LIBVA_DRIVER_NAME = "nvidia";
-    # Use NVIDIA for VDPAU           # Default to Intel for Wayland
-    GBM_BACKEND = "nvidia-drm";
     NIXPKGS_ALLOW_UNFREE = "1";
-    WLR_NO_HARDWARE_CURSORS = "1"; # Fix cursor issues in Hyprland
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia"; # NVIDIA GLX (when offloading)# Best for HD 620 (Kaby Lake)
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
   };
-  system.stateVersion = "25.05"; # Did you read the comment?
+
+  # Removed: all global GPU env vars and kernel modules — handled in `drivers/*.nix`
+
+  system.stateVersion = "25.05";
 }
