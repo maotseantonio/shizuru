@@ -1,5 +1,5 @@
 <h1 align="center">
-   <img src="./.github/assets/logo/nixos-logo.png  " width="100px" /> 
+   <img src="./.github/assets/logo/flake.png  " width="100px" /> 
    <br>
       Shizuru  
    <br>
