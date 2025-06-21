@@ -1,23 +1,14 @@
 {
   imports = [
-    ./btop.nix
-    ./equibop.nix
-    ./flatpak.nix
-    ./foot.nix
-    ./ghostty.nix
-    ./nh.nix
-    ./spotify-player.nix
-    ./spicetify.nix
-    ./starship.nix
-    ./zathura.nix
-    ./zoxide.nix
-    ./shell.nix
-    ./hyprpanel.nix
-    ./niri.nix
+    ./media
+    ./terminal 
     ./wezterm
     ./scripts
     ./terminal
     ./editors
     ./matugen
+    ./ui
   ];
+  modules.terminal.foot.enable = true;
 }
+

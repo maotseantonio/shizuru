@@ -62,7 +62,7 @@ in {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowBroken = true;
   users.mutableUsers = true;
-
+  programs.command-not-found.enable = true;
   # Packages
   environment.systemPackages =
     (with pkgs; [

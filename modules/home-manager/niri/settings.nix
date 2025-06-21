@@ -127,10 +127,10 @@ in {
         always-center-single-column = true;
         gaps = 6;
         struts = {
-          left = 0;
-          right = 0;
-          top = 0;
-          bottom = 0;
+          left = 10;
+          right = 10;
+          top = 5;
+          bottom = 5;
         };
 
         tab-indicator = {

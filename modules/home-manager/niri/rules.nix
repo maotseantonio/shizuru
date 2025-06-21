@@ -46,7 +46,7 @@
   windowRules = [
     {
       geometry-corner-radius = let
-        radius = 5.0;
+        radius = 20.0;
       in {
         bottom-left = radius;
         bottom-right = radius;
