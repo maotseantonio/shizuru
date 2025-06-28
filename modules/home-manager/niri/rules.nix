@@ -33,6 +33,7 @@
     "^(spotify)"
     "^(hiddify)"
     "^(kitty)"
+    "^(foot)"
     "^(com.mitchellh.ghostty)"
   ];
 

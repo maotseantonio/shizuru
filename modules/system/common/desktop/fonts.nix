@@ -1,6 +1,7 @@
 {
   pkgs,
   theme,
+  inputs,
   ...
 }: let
   inherit (theme) fonts;
@@ -34,8 +35,9 @@ in {
         material-symbols
         material-design-icons
         nerd-fonts.caskaydia-mono
-        #nerd-fonts.iosevka-term-slab
+        nerd-fonts.iosevka-term-slab
         #iosevka-bin
+        nerd-fonts.lilex
       ]
       ++ fallbackPackages;
     fontconfig = {

@@ -11,7 +11,7 @@ in {
         settings = {
           main = {
             term = "foot";
-            font = "JetBrainsMono Nerd Font:size=14";
+            font = "IoshelfkaMono Nerd Font:size=14";
             include = "/home/antonio/.config/foot/catppuccin-mocha.ini";
           };
           mouse = {

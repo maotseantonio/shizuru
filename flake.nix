@@ -6,12 +6,15 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-
+    font-flake.url = "github:redyf/font-flake";
     # Fish shell flake
     fish-flake = {
       url = "github:maotseantonio/fish-flakes";
     };
-
+    #anyrun related flakes 
+    anyrun.url = "github:anyrun-org/anyrun";
+#    anyrun-ha-assist.url = "github:n3oney/anyrun-ha-assist";
+    anyrun-nixos-options.url = "github:n3oney/anyrun-nixos-options/v2.0.0";
     custom-nixpkgs = {
       url = "github:maotseantonio/custom-nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -75,7 +78,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    anyrun.url = "github:fufexan/anyrun/launch-prefix";
+    anyrun-fufexan.url = "github:fufexan/anyrun/launch-prefix";
     walker.url = "github:abenz1267/walker";
     yazi.url = "github:sxyazi/yazi";
 
@@ -128,11 +131,6 @@
 
     astal-bar = {
       url = "github:maotseantonio/astal-bar";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    astal-shell = {
-      url = "github:knoopx/astal-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -221,11 +219,6 @@
     wezterm.url = "github:wezterm/wezterm?dir=nix";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nyxexprs.url = "github:notashelf/nyxexprs";
-
-    # Example of commented input
-    # zjstatus = {
-    #   url = "github:dj95/zjstatus";
-    # };
   };
 
   outputs = inputs @ {
@@ -273,15 +266,16 @@
           pkgs.qt6.qtbase
           pkgs.qt6.qtdeclarative
         ];
-      in pkgs.mkShell {
-        name = "quickshell-dev";
-        nativeBuildInputs = qtDeps;
-        shellHook = let
-          qmlPath = pkgs.lib.makeSearchPath "lib/qt-6/qml" qtDeps;
-        in ''
-          export QML2_IMPORT_PATH="$QML2_IMPORT_PATH:${qmlPath}"
-        '';
-      };
+      in
+        pkgs.mkShell {
+          name = "quickshell-dev";
+          nativeBuildInputs = qtDeps;
+          shellHook = let
+            qmlPath = pkgs.lib.makeSearchPath "lib/qt-6/qml" qtDeps;
+          in ''
+            export QML2_IMPORT_PATH="$QML2_IMPORT_PATH:${qmlPath}"
+          '';
+        };
     };
 
     # NixOS configuration for host 'shizuru'

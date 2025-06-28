@@ -21,7 +21,7 @@
       accent = "green";
       flavor = "mocha";
     };
-    cursorTheme = pkgs.lyra-cursors;
+    cursorTheme = inputs.waifu-cursors.packages.${pkgs.system}.Reichi-Shinigami;
   };
 
   cfg = config.hj.rum.misc.gtk;
@@ -38,7 +38,7 @@ in {
       theme-name = "catppuccin-mocha-green-standard+normal";
       icon-theme-name = "Papirus-Dark";
       font-name = "JetBrainsMono Nerd Font ${toString 13}";
-      cursor-theme-name = "LyraS-cursors";
+      cursor-theme-name = "Reichi-Shinigami";
     };
     css = let
       darkTheme = cfg.settings.application-prefer-dark-theme;
