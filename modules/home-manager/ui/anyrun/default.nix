@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  osConfig,
   ...
 }: {
   programs.anyrun = {
@@ -45,11 +46,11 @@
           max_entries: 5,
         )
       '';
-       "nixos-options.ron".text = let
+      "nixos-options.ron".text = let
         #               ↓ home-manager refers to the nixos configuration as osConfig
-            nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
+        nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
         # merge your options
-            options = builtins.toJSON {
+        options = builtins.toJSON {
           ":nix" = [nixos-options];
         };
         # or alternatively if you wish to read any other documentation options, such as home-manager
@@ -61,13 +62,12 @@
         #   ":something-else" = [some-other-option];
         #   ":nall" = [nixos-options hm-options some-other-option];
         # };
-
-    in ''
+      in ''
         Config(
             // add your option paths
             options: ${options},
          )
-    '';
+      '';
     };
   };
 }

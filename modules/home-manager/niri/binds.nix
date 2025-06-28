@@ -36,7 +36,7 @@
     "Mod+X".action = walkern "-m" "power";
     "Alt+Tab".action = walkern "-m" "windows";
     "Mod+Shift+X".action = spawn "ani-cli" "--rofi";
-    "Alt+Space".action = spawn "anyrun";
+    "Alt+Space".action = spawn "fuzzel";
     "Mod+Shift+Return".action = spawn "kitty";
     "Ctrl+Alt+L".action = spawn "hyprlock";
     "Mod+T".action = spawn "thunar";
