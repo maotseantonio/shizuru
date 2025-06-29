@@ -10,8 +10,8 @@
   ];
   rum.programs.walker = {
     enable = true;
-    systemd.enable = true;
-    runAsService = true;
+    systemd.enable = false;
+    runAsService = false;
     config = ../../../../configs/walker/config.toml;
     theme = {
       layout = ../../../../configs/walker/themes/base16.toml;

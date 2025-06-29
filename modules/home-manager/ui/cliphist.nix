@@ -8,6 +8,6 @@
   services.cliphist = {
     enable = true;
     allowImages = true;
-    systemdTarget = " config.wayland.systemd.target ";
+    systemdTargets = "graphical-session.target";
   };
 }

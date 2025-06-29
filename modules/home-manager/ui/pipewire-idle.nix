@@ -10,7 +10,7 @@
   ];
   services.wayland-pipewire-idle-inhibit = {
     enable = true;
-    systemdTarget = "sway-session.target";
+    systemdTarget = "graphical-session.target";
     settings = {
       verbosity = "INFO";
       media_minimum_duration = 10;
