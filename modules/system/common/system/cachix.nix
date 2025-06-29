@@ -19,7 +19,6 @@
         "https://hyprland.cachix.org"
         "https://yazi.cachix.org"
         "https://anyrun.cachix.org"
-        # "https://walker.cachix.org"
         "https://walker-git.cachix.org"
       ];
       trusted-public-keys = [

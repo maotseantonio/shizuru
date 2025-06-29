@@ -48,22 +48,6 @@ in {
     };
   };
 
-  systemd.user.services.niri-wallpaper = {
-    Unit.Description = "Daily Wallpaper Rotation";
-    Service = {
-      Type = "oneshot";
-      ExecStart = "${wallpaperScript}/bin/niri-wallpaper";
-    };
-  };
-
-  systemd.user.timers.niri-wallpaper = {
-    Unit.Description = "Daily Wallpaper Rotation Timer";
-    Timer = {
-      OnCalendar = "*-*-* 00:01:00";
-      Persistent = true;
-    };
-    Install.WantedBy = ["timers.target"];
-  };
   systemd.user.services.wayland-satalite = {
     Unit = {
       Description = "Xwayland Satalite Service";
