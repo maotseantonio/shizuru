@@ -8,6 +8,7 @@
   hm.programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
+    mutableExtensionsDir = true;
     extensions = with pkgs.vscode-extensions; [
       alefragnani.project-manager
       #astro-build.astro-vscode

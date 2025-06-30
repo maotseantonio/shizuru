@@ -287,7 +287,7 @@
         modules = [
           ./hosts/${host}/config.nix
           inputs.chaotic.nixosModules.default
-          inputs.fish-flake.nixosModules.myfish
+          #inputs.fish-flake.nixosModules.myfish
           inputs.home-manager.nixosModules.home-manager
           inputs.stylix.nixosModules.stylix
           inputs.catppuccin.nixosModules.catppuccin

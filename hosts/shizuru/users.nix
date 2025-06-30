@@ -31,8 +31,7 @@ in {
       programs.home-manager.enable = true;
     };
   };
-
-  users = {
+  users = { 
     mutableUsers = true;
     users."${username}" = {
       homeMode = "755";
@@ -44,27 +43,18 @@ in {
         "libvirtd"
         "scanner"
         "lp"
-        "video"
-        "input"
+        "video" 
+        "input" 
         "audio"
       ];
 
-      # define user packages here
-      packages = with pkgs; [
+    # define user packages here
+    packages = with pkgs; [
       ];
     };
-
-    defaultUserShell = pkgs.fish;
-  };
-  rum.programs.fish = {
-      enable = true;
-      defaultShell = true;
-  };
+    
+  }; 
   nix.settings.allowed-users = ["${username}"];
-  environment.shells = with pkgs; [fish];
-  environment.systemPackages = with pkgs; [fzf];
-  programs.fish.enable = true;
-  programs.fish.interactiveShellInit = ''
-    ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
-  ''; 
+  environment.shells = with pkgs; [ fish ];
+  environment.systemPackages = with pkgs; [ fzf ]; 
 }
