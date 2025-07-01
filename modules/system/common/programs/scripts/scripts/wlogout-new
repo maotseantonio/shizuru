@@ -1,0 +1,2 @@
+#!/usr/bin/env bash 
+wlogout --protocol layer-shell -b 5 -T 300 -B 300 -l /home/antonio/.config/wlogout/layout -C /home/antonio/.config/wlogout/nova.css -r 5 -c 30

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# if [ -z $(pidof waybar) ]; then
+#  fav-bar &
+# else
+#   pkill waybar
+# fi
+caelestia shell lock lock

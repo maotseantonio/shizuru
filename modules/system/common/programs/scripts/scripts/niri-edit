@@ -1,0 +1,63 @@
+#!/bin/bash
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# Rofi menu for Quick Edit/View of Settings (SUPER E)
+
+# Define preferred text editor and terminal
+edit=${EDITOR:-nano}
+tty=wezterm
+
+# Paths to configuration directories
+configs="$HOME/shizuru/modules/home-manager/"
+UserConfigs="$HOME/shizuru/modules/system/"
+flake="$HOME/shizuru/"
+
+# Function to display the menu options
+menu() {
+    cat <<EOF
+1. Edit niri binding
+2. Edit niri default
+3. Edit niri setting
+4. Edit niri window rule
+5. Edit flake file
+6. Edit home manager packages
+7. Edit system wayland
+8. Edit system kernel
+9. Edit system zfs
+10. Edit system services
+11. Edit host shizuru
+12. Edit Flake files 
+13. Edit host config 
+14. Edit system modules config 
+15. Edit hm-modules config
+EOF
+}
+
+# Main function to handle menu selection
+main() {
+    choice=$(menu | walker -d | cut -d. -f1)
+    
+    # Map choices to corresponding files
+    case $choice in
+        1) file="$configs/niri/binds.nix" ;;
+        2) file="$configs/niri/default.nix" ;;
+        3) file="$configs/niri/settings.nix" ;;
+        4) file="$configs/nirirules.nix" ;;
+        5) file="$flake/flake.nix" ;;
+        6) file="$configs/home-packages.nix" ;;
+        7) file="$UserConfigs/wayland.nix" ;;
+        8) file="$UserConfigs/kernel.nix" ;;
+        9) file="$UserConfigs/zfs.nix" ;;
+        10) file="$UserConfigs/services.nix" ;;
+        11) file="$flake/hosts/shizuru/config.nix" ;;
+        12) file="/home/antonio/NixOS-Hyprland/flake.nix" ;;
+        13) file="/home/antonio/NixOS-Hyprland/hosts/shizuru/config.nix" ;;
+        14) file="/home/antonio/NixOS-Hyprland/modules/system/packages.nix" ;;
+        15) file="/home/antonio/NixOS-Hyprland/modules/home-manager/home-packages.nix" ;;
+        *) return ;;  # Do nothing for invalid choices
+    esac
+
+    # Open the selected file in the terminal with the text editor
+    $tty -e $edit "$file"
+}
+
+main

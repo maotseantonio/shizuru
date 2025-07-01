@@ -1,0 +1,14 @@
+
+#!/usr/bin/env fish
+
+# if [ -z $(pidof eww) ]; then
+#  ~/.local/bin/launchme --bar &
+# else
+#   pkill eww
+# fi
+#
+if [ -z $(pidof waybar) ]; then
+ waybar &
+else
+  pkill waybar
+fi

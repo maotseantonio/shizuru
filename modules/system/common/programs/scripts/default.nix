@@ -28,6 +28,10 @@
   apply-config = pkgs.writeScriptBin "apply-config" (builtins.readFile ./scripts/apply-config.sh);
   fuzzel-clip = pkgs.writeScriptBin "fuzzel-clip" (builtins.readFile ./scripts/fuzzel-clip.sh);
   cliphist-rofi-img = pkgs.writeScriptBin "cliphist-rofi-img" (builtins.readFile ./scripts/rofi-clip-img.sh);
+  eww-bar = pkgs.writeScriptBin "eww-bar" (builtins.readFile ./scripts/eww-bar);
+  niri-edit = pkgs.writeScriptBin "niri-edit" (builtins.readFile ./scripts/niri-edit);
+  wlogout-new = pkgs.writeScriptBin "wlogout-new" (builtins.readFile ./scripts/wlogout-new);
+  brightness = pkgs.writeScriptBin "brightness" (builtins.readFile ./scripts/brightness);
 in {
   hj.packages = with pkgs; [
     # wall-change
@@ -50,6 +54,10 @@ in {
     statusbar
     apply-config
     fuzzel-clip
+    eww-bar
+    wlogout-new
+    niri-edit
+    brightness
     cliphist-rofi-img
   ];
 }

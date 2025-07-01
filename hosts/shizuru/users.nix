@@ -32,10 +32,10 @@ in {
     };
   };
   users = {
-    defaultUserShell = pkgs.zsh;
+    defaultUserShell = pkgs.fish;
     mutableUsers = true;
     users."${username}" = {
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
       homeMode = "755";
       isNormalUser = true;
       description = "${gitUsername}";
@@ -57,6 +57,6 @@ in {
   };
   
   nix.settings.allowed-users = ["${username}"];
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [ fish ];
   environment.systemPackages = with pkgs; [ fzf ]; 
 }

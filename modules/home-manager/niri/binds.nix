@@ -15,8 +15,9 @@
     brightness-up = spawn "~/.local/bin/brightness" "--inc";
     brightness-down = spawn "~/.local/bin/brightness" "--dec";
     wlogout-new = spawn "~/.local/bin/wlogout-new";
-    eww-bar = spawn "~/.local/bin/eww-bar";
+   # eww-bar = spawn "~/.local/bin/eww-bar";
     toggle-waybar = spawn "~/.local/bin/toggle-waybar";
+    qs-lock = spawn "~/.local/bin/caelestia" "shell" "lock" "lock";
   in {
     "XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
     "XF86AudioMicMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
@@ -36,7 +37,7 @@
     "Mod+Shift+Alt+S".action = screenshot-window;
     "Mod+Shift+S".action = screenshot;
     "Mod+D".action = spawn "${inputs.walker.packages.${pkgs.system}.default}/bin/walker";
-    "Mod+N".action = toggle-waybar;
+    "Mod+N".action = qs-lock;
     "Mod+Return".action = spawn "wezterm";
     "Mod+X".action = walkern "-m" "power";
     "Alt+Tab".action = walkern "-m" "windows";
@@ -48,7 +49,7 @@
     "Mod+U".action = control-center;
     "Mod+E".action = wallPicker;
     "Mod+Backspace".action = wlogout-new;
-    "Mod+B".action = eww-bar;
+    "Mod+B".action = spawn "eww-bar";
     "Mod+Q".action = close-window;
     "Mod+S".action = switch-preset-column-width;
     "Mod+F".action = maximize-column;
