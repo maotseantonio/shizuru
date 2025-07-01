@@ -4,6 +4,6 @@
     ./variables.nix
     ./ags.nix
     ./pipewire-idle.nix 
-    ./walker
+#    ./walker
   ];
 }

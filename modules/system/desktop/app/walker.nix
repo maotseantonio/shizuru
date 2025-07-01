@@ -108,19 +108,16 @@ in {
         ".config/walker/themes/default.css" = styleEntry;
       }))
     ];
-    hm.systemd.user.services.walker = mkIf (cfg.systemd.enable && cfg.runAsService) {
-    Unit = {
-      Description = "walker autostart";
-      After = "graphical-session.target";
-      PartOf = "graphical-session.target";
+
+    # systemd user service for walker
+    systemd.user.services.walker = mkIf (cfg.systemd.enable && cfg.runAsService) {
+      enable = true;
+      wantedBy = ["graphical-session.target"];
+      serviceConfig = {
+        ExecStart = "${getExe cfg.package} --gapplication-service";
+        Restart = "on-failure";
+        RestartSec = "5s";
+      };
     };
-    Install.WantedBy = ["graphical-session.target"];
-    Service = {
-      Type = "simple";
-      ExecStart = "${inputs.walker.packages.${pkgs.system}.default}/bin/walker --gapplication-service";
-      Restart = "on-failure";
-    };
-  };
-   
   };
 }

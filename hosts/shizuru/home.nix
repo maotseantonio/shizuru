@@ -58,9 +58,21 @@
     TERMINAL = "wezterm";
     VISUAL = "codium";
     BROWSER = "firefox";
-    ZDOTDIR = "$HOME/.config/zsh";
   };
-
+  systemd.user.services.walker = {
+    Unit = {
+      Description = "walker autostart";
+      After = "config.wayland.systemd.target";
+      PartOf = "config.wayland.systemd.target";
+    };
+    Install.WantedBy = ["config.wayland.systemd.target"];
+    Service = {
+      Type = "simple";
+      ExecStart = "${inputs.walker.packages.${pkgs.system}.default}/bin/walker --gapplication-service";
+      Restart = "on-failure";
+    };
+  };
+  #home.backupFileExtension = "bkp";
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
