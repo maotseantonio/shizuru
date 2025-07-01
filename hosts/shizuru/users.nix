@@ -31,9 +31,11 @@ in {
       programs.home-manager.enable = true;
     };
   };
-  users = { 
+  users = {
+    defaultUserShell = pkgs.zsh;
     mutableUsers = true;
     users."${username}" = {
+      shell = pkgs.zsh;
       homeMode = "755";
       isNormalUser = true;
       description = "${gitUsername}";
@@ -52,9 +54,9 @@ in {
     packages = with pkgs; [
       ];
     };
-    
-  }; 
+  };
+  
   nix.settings.allowed-users = ["${username}"];
-  environment.shells = with pkgs; [ fish ];
+  environment.shells = with pkgs; [ zsh ];
   environment.systemPackages = with pkgs; [ fzf ]; 
 }

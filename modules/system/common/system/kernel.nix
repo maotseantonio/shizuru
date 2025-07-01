@@ -59,6 +59,7 @@ in {
         "v4l2loopback"
         "kvm-intel"
         "drm"
+        "i2c-dev"
       ];
 
       extraModulePackages = [

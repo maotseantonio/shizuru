@@ -11,6 +11,7 @@
 }: {
   programs.nh = {
     enable = true;
+    package = inputs.nh.packages.${pkgs.system}.default;
     flake = "/home/antonio/shizuru/";
     clean = {
       enable = true;

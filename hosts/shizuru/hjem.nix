@@ -20,7 +20,7 @@
       environment = {
         sessionVariables = {
           NIXPKGS_ALLOW_UNFREE = "1";
-
+          ZDOTDIR = "$HOME/.config/zsh";
           # XDG Related Stuff
           #TODO:
           # XDG_CACHE_HOME = config.xdg.cacheHome;

@@ -41,7 +41,7 @@
 
         -- default shell
         if utils.is_linux() or utils.is_darwin() then
-          c.default_prog = { "fish", "--login" }
+          c.default_prog = { "zsh", "--login" }
         elseif utils.is_windows() then
           c.default_prog = { "wsl.exe" }
           c.default_domain = "WSL:NixOS"

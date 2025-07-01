@@ -12,6 +12,11 @@
     walkern = spawn "${inputs.walker.packages.${pkgs.system}.default}/bin/walker";
     wallPicker = spawn "walker" "-m" "wallpaper";
     walker-clip = spawn "niri-clip";
+    brightness-up = spawn "~/.local/bin/brightness" "--inc";
+    brightness-down = spawn "~/.local/bin/brightness" "--dec";
+    wlogout-new = spawn "~/.local/bin/wlogout-new";
+    eww-bar = spawn "~/.local/bin/eww-bar";
+    toggle-waybar = spawn "~/.local/bin/toggle-waybar";
   in {
     "XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
     "XF86AudioMicMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
@@ -24,14 +29,14 @@
     "XF86AudioRaiseVolume".action = set-volume "5%+";
     "XF86AudioLowerVolume".action = set-volume "5%-";
 
-    "XF86MonBrightnessUp".action = spawn "brightness" "--inc";
-    "XF86MonBrightnessDown".action = spawn "brightness" "--dec";
+    "XF86MonBrightnessUp".action = brightness-up;
+    "XF86MonBrightnessDown".action = brightness-down;
 
     "Print".action.screenshot-screen = {write-to-disk = true;};
     "Mod+Shift+Alt+S".action = screenshot-window;
     "Mod+Shift+S".action = screenshot;
     "Mod+D".action = spawn "${inputs.walker.packages.${pkgs.system}.default}/bin/walker";
-    "Mod+N".action = spawn "toggle-waybar";
+    "Mod+N".action = toggle-waybar;
     "Mod+Return".action = spawn "wezterm";
     "Mod+X".action = walkern "-m" "power";
     "Alt+Tab".action = walkern "-m" "windows";
@@ -42,8 +47,8 @@
     "Mod+T".action = spawn "thunar";
     "Mod+U".action = control-center;
     "Mod+E".action = wallPicker;
-    "Mod+Backspace".action = spawn "wlogout-new";
-    "Mod+B".action = spawn "eww-bar";
+    "Mod+Backspace".action = wlogout-new;
+    "Mod+B".action = eww-bar;
     "Mod+Q".action = close-window;
     "Mod+S".action = switch-preset-column-width;
     "Mod+F".action = maximize-column;

@@ -94,6 +94,7 @@ in {
     NIXPKGS_ALLOW_UNFREE = "1";
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
+    ZDOTDIR = "$HOME/.config/zsh";
   };
 
   # Removed: all global GPU env vars and kernel modules — handled in `drivers/*.nix`

@@ -6,10 +6,10 @@
     ./fhsenv.nix
     ./btop.nix
     ./foot.nix
-    ./fish.nix
     ./shell.nix
     ./starship.nix
     ./zathura.nix
     ./zoxide.nix
+    ./zsh.nix
   ];
 }

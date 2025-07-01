@@ -13,7 +13,6 @@
     };
     #anyrun related flakes 
     anyrun.url = "github:anyrun-org/anyrun";
-#    anyrun-ha-assist.url = "github:n3oney/anyrun-ha-assist";
     anyrun-nixos-options.url = "github:n3oney/anyrun-nixos-options/v2.0.0";
     custom-nixpkgs = {
       url = "github:maotseantonio/custom-nixpkgs";
@@ -198,8 +197,10 @@
     ghostty.url = "github:ghostty-org/ghostty";
     nixcord.url = "github:kaylorben/nixcord";
     textfox.url = "github:adriankarlen/textfox";
-    nh.url = "github:viperML/nh";
-
+    nh = { 
+        url = "github:nix-community/nh/better-env-handling";
+        inputs.nixpkgs.follows = "nixpkgs";
+     };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

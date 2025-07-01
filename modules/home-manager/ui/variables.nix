@@ -25,5 +25,6 @@
     #ANI_CLI_PLAYER = "vlc";
     SDL_VIDEODRIVER = "wayland";
     CLUTTER_BACKEND = "wayland";
+    ZDOTDIR = "$HOME/.config/zsh";
   };
 }

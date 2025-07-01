@@ -58,6 +58,7 @@
     TERMINAL = "wezterm";
     VISUAL = "codium";
     BROWSER = "firefox";
+    ZDOTDIR = "$HOME/.config/zsh";
   };
 
   # Let Home Manager install and manage itself.
