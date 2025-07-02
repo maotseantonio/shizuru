@@ -37,11 +37,6 @@
   catppuccin.enable = true;
   catppuccin.btop.enable = false;
   catppuccin.mako.enable = false;
-  # catppuccin.cursors = {
-  #     enable = true;
-  #     accent = "green";
-  #     flavor = "mocha";
-  # };
   services.mako.enable = false;
   services.arrpc = {
     enable = true;
@@ -49,8 +44,6 @@
   };
 
   home.file = {
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
   };
 
   home.sessionVariables = {
@@ -72,7 +65,5 @@
       Restart = "on-failure";
     };
   };
-  #home.backupFileExtension = "bkp";
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

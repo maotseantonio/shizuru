@@ -27,16 +27,11 @@
       plugins = {
         alwaysTrust.enable = true;
         alwaysAnimate.enable = true;
-        #BetterAnimations.enable = true;
         anonymiseFileNames = {
           enable = true;
           anonymiseByDefault = true;
         };
         banger.enable = true;
-        # betterFolders = {
-        #   enable = true;
-        #   showFolderIcon = "always";
-        # };
         betterGifAltText.enable = true;
         betterGifPicker.enable = true;
         betterNotesBox.enable = true;

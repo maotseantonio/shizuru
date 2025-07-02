@@ -4,15 +4,22 @@
   inputs,
   ...
 }: let
-  #pointer = config.home.pointerCursor;
   makeCommand = command: {
     command = [command];
   };
   wallpaperScript = pkgs.writeScriptBin "niri-wallpaper" (builtins.readFile ./wallpaperAutoChange.sh);
 in {
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.gnome-keyring];
-  home.packages = [pkgs.wl-clipboard inputs.astal-bar.packages.${pkgs.system}.default inputs.astal.packages.${pkgs.system}.default wallpaperScript];
-
+  xdg.portal.extraPortals = [
+         pkgs.xdg-desktop-portal-gtk
+         pkgs.xdg-desktop-portal-gnome
+         pkgs.gnome-keyring
+  ];
+  home.packages = [
+         pkgs.wl-clipboard
+         inputs.astal-bar.packages.${pkgs.system}.default
+         inputs.astal.packages.${pkgs.system}.default
+         wallpaperScript
+  ];
   programs.niri = {
     enable = true;
     package = pkgs.niri-unstable;
@@ -35,8 +42,7 @@ in {
         ELECTRON_ENABLE_HARDWARE_ACCELERATION = "1";
         XDG_SESSION_TYPE = "wayland";
         XDG_CURRENT_DESKTOP = "niri";
-        #DISPLAY = ":0";
-        DISPLAY = null;
+        DISPLAY = null; #  DISPLAY = ":0";
       };
       spawn-at-startup = [
         (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
@@ -46,6 +52,7 @@ in {
         (makeCommand "swww-daemon")
         (makeCommand "python /home/antonio/wayland-idle-inhibitor/wayland-idle-inhibitor.py")
         (makeCommand "qs")
+        (makeCommand "~/.local/bin/mod-qs")
         (makeCommand "uwsm-app ${wallpaperScript}/bin/niri-wallpaper")
         (makeCommand "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
         (makeCommand "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")

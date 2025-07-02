@@ -17,7 +17,7 @@
     wlogout-new = spawn "~/.local/bin/wlogout-new";
    # eww-bar = spawn "~/.local/bin/eww-bar";
     toggle-waybar = spawn "~/.local/bin/toggle-waybar";
-    qs-lock = spawn "~/.local/bin/caelestia" "shell" "lock" "lock";
+    qs-lock = spawn "~/.local/bin/lock-qs";
   in {
     "XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
     "XF86AudioMicMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";

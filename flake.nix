@@ -11,9 +11,7 @@
     fish-flake = {
       url = "github:maotseantonio/fish-flakes";
     };
-    #anyrun related flakes 
-    anyrun.url = "github:anyrun-org/anyrun";
-    anyrun-nixos-options.url = "github:n3oney/anyrun-nixos-options/v2.0.0";
+    #anyrun related flakes
     custom-nixpkgs = {
       url = "github:maotseantonio/custom-nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -197,7 +195,7 @@
     ghostty.url = "github:ghostty-org/ghostty";
     nixcord.url = "github:kaylorben/nixcord";
     textfox.url = "github:adriankarlen/textfox";
-    nh = { 
+    nh = {
         url = "github:nix-community/nh/better-env-handling";
         inputs.nixpkgs.follows = "nixpkgs";
      };

@@ -12,13 +12,12 @@
 }: {
   nix = {
     package = inputs.izlix.packages.${pkgs.system}.nix;
-    channel.enable = false;
     settings = {
-      nix-path = [
-            "nixpkgs=${inputs.nixpkgs.outPath}"
-            "nixpkgs-master=${inputs.nixpkgs-master.outPath}"
-            "nixpkgs-stable=${inputs.nixpkgs-stable.outPath}"
-       ];
+      # nix-path = [
+      #       "nixpkgs=${inputs.nixpkgs.outPath}"
+      #       "nixpkgs-master=${inputs.nixpkgs-master.outPath}"
+      #       "nixpkgs-stable=${inputs.nixpkgs-stable.outPath}"
+      #  ];
       allowed-users = ["root" "@wheel" "antonio"];
       trusted-users = ["root" "@wheel" "antonio" "@builders"];
       warn-dirty = false;

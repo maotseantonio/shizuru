@@ -15,7 +15,11 @@ in {
     ./rules.nix
   ];
 
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome pkgs.gnome-keyring];
+  xdg.portal.extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-gnome
+        pkgs.gnome-keyring
+  ];
   services.arrpc.enable = true;
   services.swww = {
     enable = true;

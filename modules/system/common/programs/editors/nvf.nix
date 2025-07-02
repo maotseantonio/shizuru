@@ -138,10 +138,7 @@
           };
           yazi-nvim.enable = true;
         };
-        rich-presence = {
-          neocord.enable = true;
-        };
-
+        
         terminal = {
           toggleterm = {
             enable = true;
@@ -172,7 +169,7 @@
         };
 
         presence = {
-          neocord.enable = false;
+          neocord.enable = true;
         };
       };
     };
