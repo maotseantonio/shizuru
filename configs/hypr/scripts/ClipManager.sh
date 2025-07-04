@@ -11,7 +11,7 @@ while true; do
         rofi -i -dmenu -show-icons -p 'Clipboard' \
             -kb-custom-1 "Control-Delete" \
             -kb-custom-2 "Alt-Delete" \
-            -config ~/.config/rofi/config-clipboard.rasi < <(cliphist list) 
+            -config ~/.config/rofi/config-clipboard.rasi < <(./cliphist-rofi-img) 
     )
 
     case "$?" in

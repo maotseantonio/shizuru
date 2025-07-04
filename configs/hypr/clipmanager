@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Clipboard Manager with image preview support (cliphist + rofi)
+
+pkill rofi || rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons
+
+

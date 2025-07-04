@@ -12,7 +12,7 @@ in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     (lib.modules.mkAliasOptionModule ["hm"] ["home-manager" "users" "${username}"]) # gitlab/fazzi
-  ]; 
+  ];
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -45,8 +45,8 @@ in {
         "libvirtd"
         "scanner"
         "lp"
-        "video" 
-        "input" 
+        "video"
+        "input"
         "audio"
       ];
 
@@ -55,8 +55,8 @@ in {
       ];
     };
   };
-  
+  security.sudo.wheelNeedsPassword = false;
   nix.settings.allowed-users = ["${username}"];
   environment.shells = with pkgs; [ fish ];
-  environment.systemPackages = with pkgs; [ fzf ]; 
+  environment.systemPackages = with pkgs; [ fzf ];
 }

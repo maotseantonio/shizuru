@@ -7,7 +7,7 @@ edit=${EDITOR:-nano}
 tty=wezterm
 
 # Paths to configuration directories
-configs="$HOME/.config/hypr/configs"
+Configs="$HOME/.config/hypr/configs/"
 UserConfigs="$HOME/.config/hypr/UserConfigs"
 
 # Function to display the menu options
@@ -36,14 +36,14 @@ main() {
         1) file="$UserConfigs/ENVariables.conf" ;;
         2) file="$UserConfigs/WindowRules.conf" ;;
         3) file="$UserConfigs/Startup_Apps.conf" ;;
-        4) file="$UserConfigs/UserKeybinds.conf" ;;
+        4) file="$Configs/keybinds.conf" ;;
         5) file="$UserConfigs/Monitors.conf" ;;
         6) file="$UserConfigs/Laptops.conf" ;;
         7) file="$UserConfigs/UserSettings.conf" ;;
         8) file="$UserConfigs/UserDecorAnimations.conf" ;;
         9) file="$UserConfigs/WorkspaceRules.conf" ;;
         10) file="$configs/Settings.conf" ;;
-        11) file="$configs/Keybinds.conf" ;;
+        11) file="$HOME/.config/hypr/configs/keybinds.conf" ;;
         *) return ;;  # Do nothing for invalid choices
     esac
 

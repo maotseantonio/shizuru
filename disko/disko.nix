@@ -1,114 +1,96 @@
-{
-  device ? throw "/dev/nvme0n1",
-  hostname,
-  ...
-}: {
-  disko = {
-    devices = {
-      disk = {
-        main =
-          if (hostname == "ShadowMoses")
-          then {
-            inherit device;
-            type = "disk";
-            content = {
-              type = "gpt";
-              partitions = {
-                boot = {
-                  name = "boot";
-                  size = "1M";
-                  type = "EF02";
-                };
-                esp = {
-                  name = "ESP";
-                  size = "1024M";
-                  type = "EF00";
-                  content = {
-                    type = "filesystem";
-                    format = "vfat";
-                    mountpoint = "/boot";
-                  };
-                };
-                root = {
-                  size = "100%";
-                  content = {
-                    type = "zfs";
-                    pool = "zroot";
-                  };
-                };
+{ disks ? [ "/dev/nvme0n1" ], ... }: {
+  disko.devices = {
+    disk = {
+      main = {
+        type = "disk";
+        device = builtins.elemAt disks 0;
+        content = {
+          type = "gpt";
+          partitions = {
+            ESP = {
+              size = "1024M";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
               };
             };
-          }
-          else {
-            inherit device;
-            type = "disk";
-            content = {
-              type = "gpt";
-              partitions = {
-                boot = {
-                  name = "boot";
-                  size = "1M";
-                  type = "EF02";
-                };
-                esp = {
-                  name = "ESP";
-                  size = "1024M";
-                  type = "EF00";
-                  content = {
-                    type = "filesystem";
-                    format = "vfat";
-                    mountpoint = "/boot";
-                  };
-                };
-                root = {
-                  size = "100%";
-                  content = {
-                    type = "zfs";
-                    pool = "zroot";
-                  };
-                };
-                swap = {
-                  size = "16G";
-                  content = {
-                    type = "swap";
-                    resumeDevice = true;
-                  };
-                };
+            swap = {
+              size = "16G";
+              content = {
+                type = "swap";
+                resumeDevice = true;
+              };
+            };
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "zroot";
               };
             };
           };
+        };
       };
-      zpool = {
-        zroot = {
-          type = "zpool";
-          rootFsOptions = {
-            canmount = "off";
+    };
+
+    zpool = {
+      zroot = {
+        type = "zpool";
+        rootFsOptions = {
+          compression = "zstd";
+          "com.sun:auto-snapshot" = "false";
+          mountpoint = "none";
+          acltype = "posixacl";
+          atime = "off";
+        };
+        mountOptions = [
+          "ashift=12"
+        ];
+
+        postCreateHook = ''
+          zfs list -t snapshot -H -o name | grep -q '^zroot@blank$' || zfs snapshot zroot@blank
+        '';
+
+        datasets = {
+          root = {
+            type = "zfs_fs";
+            mountpoint = "/";
+            options."com.sun:auto-snapshot" = "true";
           };
-          datasets = {
-            nix = {
-              type = "zfs_fs";
-              mountpoint = "/nix";
-              options.mountpoint = "legacy";
+
+          nix = {
+            type = "zfs_fs";
+            mountpoint = "/nix";
+            options = {
+              "com.sun:auto-snapshot" = "false";
             };
-            persist = {
-              type = "zfs_fs";
-              mountpoint = "/persist";
-              options.mountpoint = "legacy";
-            };
-            persist-cache = {
-              type = "zfs_fs";
-              mountpoint = "/persist/cache";
-              options.mountpoint = "legacy";
-            };
-            tmp = {
-              type = "zfs_fs";
-              mountpoint = "/tmp";
-              options.mountpoint = "legacy";
-            };
-            disks = {
-              type = "zfs_fs";
-              mountpoint = "/disks";
-              options.mountpoint = "legacy";
+          };
+
+          var = {
+            type = "zfs_fs";
+            mountpoint = "/var";
+            options."com.sun:auto-snapshot" = "false";
+          };
+
+          var_log = {
+            type = "zfs_fs";
+            mountpoint = "/var/log";
+            options."com.sun:auto-snapshot" = "false";
+          };
+
+          home = {
+            type = "zfs_fs";
+            mountpoint = "/home";
+            options."com.sun:auto-snapshot" = "true";
+          };
+
+          persist = {
+            type = "zfs_fs";
+            mountpoint = "/persist";
+            options = {
+              "com.sun:auto-snapshot" = "true";
             };
           };
         };

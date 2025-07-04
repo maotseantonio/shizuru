@@ -1,11 +1,12 @@
 plugin {
     scroller {
-        column_default_width = fiveeighths
+        column_default_width = onehalf
         focus_wrap = false
         column_widths = onehalf one 
         center_active_column = false
-        center_active_window = true
-        center_row_if_space_available = true
+        center_active_window = false
+        center_row_if_space_available = true 
+        window_heights = onehalf one
     }
 }
 # Move focus with mainMod + arrow keys
@@ -18,20 +19,15 @@ bind = $mainMod, end, scroller:movefocus, end
 bind = $mainMod, l, movefocus, r
 bind = $mainMod, h, movefocus, l
 # Movement
-bind = $mainMod CTRL, left, movewindow, l
+bind = $mainMod CTRL, left, scroller:movewindow, d
 bind = $mainMod CTRL, right, movewindow, r
-bind = $mainMod CTRL, up, movewindow, u
-#bind = $mainMod CTRL, down, movewindow, d
-bind = $mainMod CTRL, down, scroller:movewindow, d
+bind = $mainMod SHIFT, L, scroller:movewindow, l 
+bind = $mainMod SHIFT, H, scroller:movewindow, r
+bind = $mainMod SHIFT, up, scroller:setheight, one
+bind = $mainMod SHIFT, down, scroller:setheight, onehalf
+#bind = $mainMod CTRL, down, scroller:movewindow, d
 bind = $mainMod CTRL, home, scroller:movewindow, begin
 bind = $mainMod CTRL, end, scroller:movewindow, end
-bind = $mainMod ALT, left, movewindow, l, nomode
-bind = $mainMod ALT, right, movewindow, r, nomode
-bind = $mainMod ALT, up, movewindow, u, nomode
-bind = $mainMod ALT, down, movewindow, d, nomode
-bind = $mainMod ALT, home, scroller:movewindow, begin, nomode
-bind = $mainMod ALT, end, scroller:movewindow, end, nomode
-
 # Modes
 # Set Mode Modifiers submap
 # will switch to a submap called modifiers
@@ -72,12 +68,12 @@ submap = reset
 # Sizing keys
 # bind = $mainMod, equal, scroller:cyclesize, next
 # bind = $mainMod, minus, scroller:cyclesize, prev
-bind = $mainMod, equal, resizeactive, 200 0
+bind = $mainMod, equal, resizeactive, 250 0
 bind = $mainMod, minus, resizeactive, -200 0
 bind = $mainMod SHIFT, equal, scroller:cycleheight, next
 bind = $mainMod SHIFT, minus, scroller:cycleheight, prev
 bind = $mainMod , F, scroller:cyclewidth, next
-
+bind = $mainMod , grave, scroller:cycleheight, next
 # Sizes submap
 # will switch to a submap called sizing
 #bind = $mainMod, b, submap, sizing
@@ -114,8 +110,9 @@ bind = , escape, submap, reset
 submap = reset
 
 # Admit/Expel
-bind = $mainMod, I, scroller:admitwindow,
-bind = $mainMod, O, scroller:expelwindow,
+bind = $mainMod, comma, scroller:admitwindow,
+#bind = $mainMod Ctrl, down, scroller:expelwindow,
+bind = $mainMod , period, scroller:expelwindow,
 bind = $mainMod SHIFT, I, scroller:admitwindow, r
 bind = $mainMod SHIFT, O, scroller:expelwindow, l
 

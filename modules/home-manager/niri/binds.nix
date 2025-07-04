@@ -62,8 +62,8 @@
     "Mod+Comma".action = consume-window-into-column;
     "Mod+Period".action = expel-window-from-column;
     "Mod+C".action = center-window;
-    "Mod+Tab".action = switch-focus-between-floating-and-tiling;
-
+    "Mod+grave".action = switch-focus-between-floating-and-tiling;
+    "Mod+Tab".action = toggle-overview;
     "Mod+1".action = focus-workspace 1;
     "Mod+2".action = focus-workspace 2;
     "Mod+3".action = focus-workspace 3;

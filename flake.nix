@@ -11,12 +11,12 @@
     fish-flake = {
       url = "github:maotseantonio/fish-flakes";
     };
-    #anyrun related flakes
+   #anyrun related flakes
     custom-nixpkgs = {
       url = "github:maotseantonio/custom-nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # izLix module
+   # izLix module
     izlix = {
       type = "github"; # legacy-style declaration (optional)
       owner = "isabelroses";
@@ -33,7 +33,7 @@
 
     # Modules and utilities
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.2-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -183,7 +183,7 @@
     };
 
     illogical-impulse = {
-      url = "github:maotseantonio/end-4-dots";
+      url = "github:maotseantonio/end-4-dots-hyprland-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
